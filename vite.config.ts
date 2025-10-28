@@ -6,19 +6,21 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   
-  // Tell Vite where your HTML file is
-  root: '.', 
+  // --- FIX 1 ---
+  // Tell Vite that your "root" (where index.html is) is inside the 'client' folder
+  root: 'client', 
 
   resolve: {
     alias: {
-      // This allows you to use "@/" imports
+      // This path is still correct for your "@" imports
       "@": path.resolve(__dirname, "./client/src"),
     },
   },
 
   build: {
-    // Tell Vite to build to a simple "dist" folder
-    outDir: 'dist',
+    // --- FIX 2 ---
+    // Tell Vite to build the 'dist' folder in the *project root* // (one level up from the 'client' folder)
+    outDir: '../dist',
   }
 })
 
