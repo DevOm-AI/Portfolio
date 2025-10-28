@@ -41,9 +41,11 @@ If you'd like to run this project on your own machine, you can do so with the fo
 git clone [https://github.com/DevOm-AI/Portfolio.git](https://github.com/DevOm-AI/Portfolio.git)
 
 
+
 2. Navigate to the project directory:
 
 cd Portfolio
+
 
 
 3. Install dependencies:
@@ -51,9 +53,11 @@ cd Portfolio
 npm install
 
 
+
 4. Run the development server:
 
 npm run dev
+
 
 
 The site will now be running on http://localhost:5173 (or the next available port).
