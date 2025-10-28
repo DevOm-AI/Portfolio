@@ -1,6 +1,6 @@
 Om Shete - AI & Front-End Developer Portfolio
 
-🚀 View The Live Portfolio 🚀
+🚀 [View The Live Portfolio](https://devom-ai.vercel.app/) 🚀
 
 This repository contains the complete source code for my personal portfolio website, built from scratch to showcase my skills, projects, and professional experience.
 
