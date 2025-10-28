@@ -3,14 +3,17 @@ import { useTheme } from "./ThemeProvider";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
+// --- MODIFICATION HERE ---
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Education", href: "#education" },
+  { name: "Certifications", href: "#certifications" }, // <-- ADDED THIS
   { name: "Contact", href: "#contact" },
 ];
+// --- END MODIFICATION ---
 
 export default function Navigation() {
   const { theme, setTheme } = useTheme();
@@ -38,7 +41,7 @@ export default function Navigation() {
             className="font-mono text-lg font-semibold hover-elevate active-elevate-2 px-2 py-1 rounded-md transition-transform"
             data-testid="link-logo"
           >
-            &lt;Om/&gt;
+            &lt;DevOm-AI/&gt;
           </button>
 
           {/* Desktop Navigation */}

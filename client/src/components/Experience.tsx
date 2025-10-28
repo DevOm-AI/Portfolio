@@ -42,11 +42,13 @@ export default function Experience() {
         {/* Experience Card */}
         <div className="max-w-3xl mx-auto">
           <Card
-            className={`p-5 transition-all duration-700 ${
+            // --- MODIFICATION: Added hover effects ---
+            className={`p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
               isInView
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-8"
             }`}
+            // --- END MODIFICATION ---
             data-testid="card-experience"
           >
             <div className="flex gap-4">

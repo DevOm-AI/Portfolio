@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Github } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 
@@ -9,13 +9,8 @@ const contactMethods = [
     icon: Mail,
     label: "Email",
     value: "om.shete.developer@gmail.com",
-    href: "mailto:om.shete.developer@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+91 8237149044",
-    href: "tel:+918237149044",
+    // --- MODIFICATION 1: Updated href ---
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=om.shete.developer@gmail.com",
   },
   {
     icon: Github,
@@ -23,17 +18,31 @@ const contactMethods = [
     value: "DevOm-AI",
     href: "https://github.com/DevOm-AI",
   },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "om-shete-ai-developer",
+    href: "https://www.linkedin.com/in/om-shete-ai-developer",
+  },
+  {
+    icon: Twitter,
+    label: "X (Twitter)",
+    value: "@Om_S_Dev",
+    href: "https://x.com/Om_S_Dev",
+  },
 ];
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // --- MODIFICATION 2: Added "Email" to array ---
+  const externalLinks = ["Email", "GitHub", "LinkedIn", "X (Twitter)"];
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="py-16 md:py-20 px-6 md:px-12 bg-muted/30"
+      className="py-16 md:py-20 px-6 md:px-12"
     >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
@@ -57,7 +66,7 @@ export default function Contact() {
             }`}
             data-testid="card-contact"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {contactMethods.map((method) => {
                 const Icon = method.icon;
                 return (
@@ -66,13 +75,23 @@ export default function Contact() {
                     variant="outline"
                     size="default"
                     asChild
-                    className="h-auto py-4 flex-col gap-2 hover-elevate"
-                    data-testid={`button-contact-${method.label.toLowerCase()}`}
+                    className="h-full py-4 flex-col gap-2 hover-elevate" // Kept your 'hover-elevate' class
+                    data-testid={`button-contact-${method.label
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
                   >
                     <a
                       href={method.href}
-                      target={method.label === "GitHub" ? "_blank" : undefined}
-                      rel={method.label === "GitHub" ? "noopener noreferrer" : undefined}
+                      target={
+                        externalLinks.includes(method.label)
+                          ? "_blank"
+                          : undefined
+                      }
+                      rel={
+                        externalLinks.includes(method.label)
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                     >
                       <Icon className="h-4 w-4" />
                       <div className="text-center">

@@ -1,4 +1,4 @@
-import { Github, Mail, ChevronDown } from "lucide-react";
+import { Github, Mail, ChevronDown, FileText } from "lucide-react"; // Added FileText
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -27,11 +27,12 @@ export default function Hero() {
 
         {/* Tagline */}
         <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-          Making machines smarter, one model at a time
+          if (bug) console.log("It's not a bug, it's a future feature 😎");
         </p>
 
-        {/* CTA Buttons */}
+        {/* --- MODIFICATION: Button group updated --- */}
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
+          {/* GitHub Button */}
           <Button
             size="default"
             asChild
@@ -48,6 +49,8 @@ export default function Hero() {
               GitHub
             </a>
           </Button>
+
+          {/* Contact Button */}
           <Button
             size="default"
             variant="outline"
@@ -63,12 +66,31 @@ export default function Hero() {
               Contact
             </a>
           </Button>
+
+          {/* NEW Resume Button */}
+          <Button
+            size="default"
+            asChild
+            className="rounded-full" // No variant prop = default solid style (like GitHub)
+            data-testid="button-resume"
+          >
+            <a
+              href="https://drive.google.com/file/d/1BRAZD5PgPXDmTb-LCBHpGV8t0yCiJfA0/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <FileText className="h-4 w-4" />
+              Resume
+            </a>
+          </Button>
         </div>
+        {/* --- END MODIFICATION --- */}
 
         {/* Education Highlight */}
         <div className="pt-6 animate-in fade-in duration-700 delay-500">
           <p className="text-xs text-muted-foreground">
-            B.E. AI & Data Science • CGPA 8.43 • Pune
+            B.E. AI & Data Science • CGPA 8.29 • Pune
           </p>
         </div>
 

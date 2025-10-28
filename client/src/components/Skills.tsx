@@ -22,7 +22,7 @@ const skillCategories = [
   {
     title: "Expertise",
     icon: GraduationCap,
-    skills: ["AI/ML", "Data Science", "Cloud", "System Design"],
+    skills: ["AI/ML", "Data Science", "React JS", "Debugging", "Cloud", "System Design"],
   },
 ];
 

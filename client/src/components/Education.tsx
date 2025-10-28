@@ -1,29 +1,24 @@
 import { Card } from "@/components/ui/card";
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 
 const education = [
   {
-    institution: "Dr. D. Y. Patil College",
-    degree: "B.E. AI & Data Science",
-    duration: "2023 – 2026",
-    location: "Pune",
-    cgpa: "8.43",
+    institution: "Dr. D. Y. Patil College of Engineering and Innovation",
+    degree: "Bachelor of Engineering (Artificial Intelligence and Data Science)",
+    duration: "Sep. 2023 – June 2026",
+    location: "Pune, MH",
+    cgpa: "8.29",
   },
   {
     institution: "Yogeshwari Polytechnic",
-    degree: "Diploma in CS",
-    duration: "2021 – 2023",
-    location: "Ambajogai",
+    degree: "Diploma in Computer Engineering",
+    duration: "Jan. 2021 – July 2023",
+    location: "Ambajogai, MH",
     cgpa: null,
+    courses: null,
   },
-];
-
-const certifications = [
-  { title: "Cyber Security Analyst", issuer: "TCS Forage" },
-  { title: "Blockchain Build Station", issuer: "Geeks of Gurukul" },
-  { title: "Python Workshop", issuer: "IEEE SB VIT" },
 ];
 
 export default function Education() {
@@ -52,11 +47,13 @@ export default function Education() {
             {education.map((edu, index) => (
               <Card
                 key={edu.institution}
-                className={`p-5 transition-all duration-700 ${
+                // --- MODIFICATION: Added hover effects ---
+                className={`p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
                   isInView
                     ? "opacity-100 translate-x-0"
                     : "opacity-0 translate-x-8"
                 }`}
+                // --- END MODIFICATION ---
                 style={{ transitionDelay: `${index * 100}ms` }}
                 data-testid={`card-education-${index}`}
               >
@@ -82,36 +79,9 @@ export default function Education() {
                     </div>
                   </div>
                 </div>
+
               </Card>
             ))}
-          </div>
-
-          {/* Certifications */}
-          <div
-            className={`transition-all duration-700 delay-200 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h3 className="text-lg font-semibold mb-4 text-center flex items-center justify-center gap-2">
-              <Award className="h-4 w-4" />
-              Certifications
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {certifications.map((cert, index) => (
-                <Card
-                  key={cert.title}
-                  className="p-4 text-center hover-elevate transition-all"
-                  data-testid={`card-certification-${index}`}
-                >
-                  <h4 className="font-semibold text-sm mb-1">{cert.title}</h4>
-                  <p className="text-xs text-muted-foreground">
-                    {cert.issuer}
-                  </p>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </div>

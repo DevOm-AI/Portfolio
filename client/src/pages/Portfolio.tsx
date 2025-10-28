@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
+import Certifications from "@/components/Certifications";
 
 export default function Portfolio() {
   return (
@@ -16,6 +17,7 @@ export default function Portfolio() {
         <Projects />
         <Experience />
         <Education />
+        <Certifications />
         <Contact />
       </main>
     </div>
