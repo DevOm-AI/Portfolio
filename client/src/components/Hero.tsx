@@ -12,30 +12,28 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 md:px-12 py-20"
+      className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 md:px-12 py-16"
     >
-      <div className="max-w-4xl w-full text-center space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <div className="max-w-3xl w-full text-center space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
         {/* Main Heading */}
-        <div className="space-y-4">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+        <div className="space-y-3">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
             Om Shete
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground font-medium animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+          <p className="text-lg md:text-xl text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
             AI Developer & Front-End Engineer
           </p>
         </div>
 
-        {/* Tagline with subtle humor */}
-        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-          Making machines smarter, one model at a time ☕
-          <br />
-          Crafting intelligent solutions with Python, JavaScript, and a dash of creativity.
+        {/* Tagline */}
+        <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+          Making machines smarter, one model at a time
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-2 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
           <Button
-            size="lg"
+            size="default"
             asChild
             className="rounded-full"
             data-testid="button-github"
@@ -46,12 +44,12 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="flex items-center gap-2"
             >
-              <Github className="h-5 w-5" />
+              <Github className="h-4 w-4" />
               GitHub
             </a>
           </Button>
           <Button
-            size="lg"
+            size="default"
             variant="outline"
             asChild
             className="rounded-full"
@@ -61,18 +59,17 @@ export default function Hero() {
               href="mailto:om.shete.developer@gmail.com"
               className="flex items-center gap-2"
             >
-              <Mail className="h-5 w-5" />
-              Get in Touch
+              <Mail className="h-4 w-4" />
+              Contact
             </a>
           </Button>
         </div>
 
         {/* Education Highlight */}
-        <div className="pt-8 animate-in fade-in duration-700 delay-500">
-          <p className="text-sm text-muted-foreground">
-            B.E. in AI & Data Science @ Dr. D. Y. Patil College of Engineering
+        <div className="pt-6 animate-in fade-in duration-700 delay-500">
+          <p className="text-xs text-muted-foreground">
+            B.E. AI & Data Science • CGPA 8.43 • Pune
           </p>
-          <p className="text-xs text-muted-foreground mt-1">CGPA: 8.43 | Pune, MH</p>
         </div>
 
         {/* Scroll Indicator */}
@@ -81,7 +78,7 @@ export default function Hero() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
           data-testid="button-scroll-down"
         >
-          <ChevronDown className="h-6 w-6 text-muted-foreground" />
+          <ChevronDown className="h-5 w-5 text-muted-foreground" />
         </button>
       </div>
     </section>

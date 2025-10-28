@@ -20,7 +20,7 @@ const contactMethods = [
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/DevOm-AI",
+    value: "DevOm-AI",
     href: "https://github.com/DevOm-AI",
   },
 ];
@@ -33,49 +33,40 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 md:py-32 px-6 md:px-12 bg-muted/30"
+      className="py-16 md:py-20 px-6 md:px-12 bg-muted/30"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 space-y-2">
           <h2
-            className={`text-3xl md:text-4xl lg:text-5xl font-bold transition-all duration-700 ${
+            className={`text-2xl md:text-3xl font-semibold transition-all duration-700 ${
               isInView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Get In Touch
+            Contact
           </h2>
-          <p
-            className={`text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-100 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            Let's collaborate on something amazing. I'm always open to discussing new projects and opportunities.
-          </p>
         </div>
 
         {/* Contact Cards */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <Card
-            className={`p-8 md:p-12 transition-all duration-700 delay-200 ${
+            className={`p-6 transition-all duration-700 delay-100 ${
               isInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
             data-testid="card-contact"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {contactMethods.map((method, index) => {
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {contactMethods.map((method) => {
                 const Icon = method.icon;
                 return (
                   <Button
                     key={method.label}
                     variant="outline"
-                    size="lg"
+                    size="default"
                     asChild
-                    className="h-auto py-6 flex-col gap-3 hover-elevate"
+                    className="h-auto py-4 flex-col gap-2 hover-elevate"
                     data-testid={`button-contact-${method.label.toLowerCase()}`}
                   >
                     <a
@@ -83,9 +74,9 @@ export default function Contact() {
                       target={method.label === "GitHub" ? "_blank" : undefined}
                       rel={method.label === "GitHub" ? "noopener noreferrer" : undefined}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-4 w-4" />
                       <div className="text-center">
-                        <p className="font-semibold text-sm mb-1">
+                        <p className="font-semibold text-xs mb-0.5">
                           {method.label}
                         </p>
                         <p className="text-xs text-muted-foreground break-all">
@@ -102,15 +93,15 @@ export default function Contact() {
 
         {/* Footer */}
         <div
-          className={`text-center mt-16 space-y-2 transition-all duration-700 delay-400 ${
+          className={`text-center mt-12 space-y-1 transition-all duration-700 delay-300 ${
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-sm text-muted-foreground">
-            Built with React & Tailwind CSS
+          <p className="text-xs text-muted-foreground">
+            Built with React & Tailwind
           </p>
           <p className="text-xs text-muted-foreground font-mono">
-            console.log("Let's build something amazing together!");
+            console.log("Let's build something great!");
           </p>
         </div>
       </div>

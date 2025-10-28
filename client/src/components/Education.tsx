@@ -1,41 +1,29 @@
 import { Card } from "@/components/ui/card";
-import { GraduationCap, MapPin } from "lucide-react";
+import { GraduationCap, Award } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 
 const education = [
   {
-    institution: "Dr. D. Y. Patil College of Engineering and Innovation",
-    degree: "Bachelor of Engineering (Artificial Intelligence and Data Science)",
-    duration: "Sep. 2023 – June 2026",
-    location: "Pune, MH",
+    institution: "Dr. D. Y. Patil College",
+    degree: "B.E. AI & Data Science",
+    duration: "2023 – 2026",
+    location: "Pune",
     cgpa: "8.43",
   },
   {
     institution: "Yogeshwari Polytechnic",
-    degree: "Diploma in Computer Engineering",
-    duration: "Jan. 2021 – July 2023",
-    location: "Ambajogai, MH",
+    degree: "Diploma in CS",
+    duration: "2021 – 2023",
+    location: "Ambajogai",
     cgpa: null,
   },
 ];
 
 const certifications = [
-  {
-    title: "Cyber Security Analyst",
-    issuer: "TCS Forage",
-    date: "January 2025",
-  },
-  {
-    title: "Blockchain Build Station",
-    issuer: "Geeks of Gurukul",
-    date: "January 2025",
-  },
-  {
-    title: "Python Workshop",
-    issuer: "IEEE SB VIT",
-    date: "February 2024",
-  },
+  { title: "Cyber Security Analyst", issuer: "TCS Forage" },
+  { title: "Blockchain Build Station", issuer: "Geeks of Gurukul" },
+  { title: "Python Workshop", issuer: "IEEE SB VIT" },
 ];
 
 export default function Education() {
@@ -43,67 +31,54 @@ export default function Education() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="education" ref={ref} className="py-20 md:py-32 px-6 md:px-12">
-      <div className="max-w-6xl mx-auto">
+    <section id="education" ref={ref} className="py-16 md:py-20 px-6 md:px-12">
+      <div className="max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 space-y-2">
           <h2
-            className={`text-3xl md:text-4xl lg:text-5xl font-bold transition-all duration-700 ${
+            className={`text-2xl md:text-3xl font-semibold transition-all duration-700 ${
               isInView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Education & Certifications
+            Education
           </h2>
-          <p
-            className={`text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-100 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            Continuous learning and skill development.
-          </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           {/* Education Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {education.map((edu, index) => (
               <Card
                 key={edu.institution}
-                className={`p-6 md:p-8 transition-all duration-700 ${
+                className={`p-5 transition-all duration-700 ${
                   isInView
                     ? "opacity-100 translate-x-0"
                     : "opacity-0 translate-x-8"
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{ transitionDelay: `${index * 100}ms` }}
                 data-testid={`card-education-${index}`}
               >
-                <div className="flex gap-4">
-                  <div className="p-3 bg-primary text-primary-foreground rounded-lg h-fit">
-                    <GraduationCap className="h-6 w-6" />
+                <div className="flex gap-3">
+                  <div className="p-2 bg-primary text-primary-foreground rounded-md h-fit">
+                    <GraduationCap className="h-4 w-4" />
                   </div>
-                  <div className="flex-1 space-y-3">
-                    <h3 className="text-lg font-semibold leading-tight">
+                  <div className="flex-1 space-y-2">
+                    <h3 className="text-sm font-semibold leading-tight">
                       {edu.institution}
                     </h3>
-                    <p className="text-muted-foreground">{edu.degree}</p>
-                    <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
+                    <p className="text-xs text-muted-foreground">{edu.degree}</p>
+                    <div className="flex flex-wrap gap-1.5 text-xs text-muted-foreground">
                       <span className="font-mono">{edu.duration}</span>
                       {edu.cgpa && (
                         <>
                           <span>•</span>
                           <span className="font-semibold text-foreground">
-                            CGPA: {edu.cgpa}
+                            {edu.cgpa} CGPA
                           </span>
                         </>
                       )}
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4" />
-                      <span>{edu.location}</span>
                     </div>
                   </div>
                 </div>
@@ -113,28 +88,26 @@ export default function Education() {
 
           {/* Certifications */}
           <div
-            className={`transition-all duration-700 delay-300 ${
+            className={`transition-all duration-700 delay-200 ${
               isInView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <h3 className="text-2xl font-semibold mb-6 text-center">
-              Professional Certifications
+            <h3 className="text-lg font-semibold mb-4 text-center flex items-center justify-center gap-2">
+              <Award className="h-4 w-4" />
+              Certifications
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {certifications.map((cert, index) => (
                 <Card
                   key={cert.title}
-                  className="p-6 text-center hover-elevate transition-all"
+                  className="p-4 text-center hover-elevate transition-all"
                   data-testid={`card-certification-${index}`}
                 >
-                  <h4 className="font-semibold mb-2">{cert.title}</h4>
-                  <p className="text-sm text-muted-foreground mb-1">
+                  <h4 className="font-semibold text-sm mb-1">{cert.title}</h4>
+                  <p className="text-xs text-muted-foreground">
                     {cert.issuer}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-mono">
-                    {cert.date}
                   </p>
                 </Card>
               ))}

@@ -7,31 +7,22 @@ const skillCategories = [
   {
     title: "Languages",
     icon: Code2,
-    skills: ["Python", "HTML", "CSS", "JavaScript", "SQL"],
+    skills: ["Python", "JavaScript", "SQL", "HTML/CSS"],
   },
   {
-    title: "Developer Tools",
+    title: "Tools",
     icon: Wrench,
-    skills: ["VS Code", "Eclipse", "GitHub", "Postman API", "Android Studio"],
+    skills: ["VS Code", "GitHub", "Postman", "Android Studio"],
   },
   {
-    title: "Database Systems",
+    title: "Databases",
     icon: Database,
     skills: ["MySQL", "PostgreSQL", "MongoDB"],
   },
   {
-    title: "Coursework",
+    title: "Expertise",
     icon: GraduationCap,
-    skills: [
-      "DSA",
-      "Cloud Computing",
-      "Cyber Security",
-      "NoSQL Databases",
-      "System Design",
-      "Data Analytics",
-      "Artificial Intelligence",
-      "LLM Fine-Tuning",
-    ],
+    skills: ["AI/ML", "Data Science", "Cloud", "System Design"],
   },
 ];
 
@@ -43,63 +34,54 @@ export default function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="py-20 md:py-32 px-6 md:px-12 bg-muted/30"
+      className="py-16 md:py-20 px-6 md:px-12 bg-muted/30"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 space-y-2">
           <h2
-            className={`text-3xl md:text-4xl lg:text-5xl font-bold transition-all duration-700 ${
+            className={`text-2xl md:text-3xl font-semibold transition-all duration-700 ${
               isInView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Technical Skills
+            Skills
           </h2>
-          <p
-            className={`text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-100 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            A comprehensive toolkit for building intelligent applications and elegant user experiences.
-          </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
               <Card
                 key={category.title}
-                className={`p-6 md:p-8 hover-elevate transition-all duration-700 ${
+                className={`p-5 hover-elevate transition-all duration-700 ${
                   isInView
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{ transitionDelay: `${index * 100}ms` }}
                 data-testid={`card-skill-${category.title.toLowerCase().replace(/\s+/g, "-")}`}
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary text-primary-foreground rounded-lg">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-4">{category.title}</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {category.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="px-3 py-1.5 bg-accent text-accent-foreground text-sm font-medium rounded-full border border-accent-border"
-                          data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, "-")}`}
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-primary text-primary-foreground rounded-md">
+                      <Icon className="h-4 w-4" />
                     </div>
+                    <h3 className="text-sm font-semibold">{category.title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-0.5 bg-accent text-accent-foreground text-xs rounded-md border border-accent-border"
+                        data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, "-")}`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </Card>
