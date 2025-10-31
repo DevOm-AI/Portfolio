@@ -35,6 +35,11 @@ const certifications = [
     issuer: "Infosys",
     url: "https://drive.google.com/file/d/1OBhB7Cp86TO6tcGYhvs6A5igSxfHMofs/view?usp=drive_link",
   },
+  {
+    title: "Deloitte Data Analytics",
+    issuer: "Deloitte Forage",
+    url: "https://drive.google.com/file/d/19kfJmjCZJu2KjpQzQRNrWTIh7_Vfq6pK/view?usp=drive_link",
+  },
 ];
 // --- END MODIFICATION 1 ---
 
