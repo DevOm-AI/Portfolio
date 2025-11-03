@@ -18,12 +18,22 @@ const projects = [
   },
   {
     title: "NGO Website",
-    date: "Jan 2025",
+    date: "April 2025",
     technologies: ["HTML", "CSS", "JavaScript"],
     achievements: [
       "Generated 25+ volunteer signups and ₹10,000 in donations within 3 weeks",
       "Increased session duration by 40% through engaging UI redesign",
       "Optimized for fast load times and cross-browser compatibility",
+    ],
+  },
+  {
+    title: "Genify",
+    date: "Nov 2025",
+    technologies: ["Python", "Hugging Face", "Gradio", "Stable Diffusion Turbo"],
+    achievements: [
+      "Built a fast and efficient AI-powered image generator using Stable Diffusion Turbo",
+      "Integrated Gradio interface for seamless local and browser-based generation",
+      "Optimized performance for lightweight, cost-free image synthesis and real-time output",
     ],
   },
 ];
