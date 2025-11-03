@@ -35,6 +35,7 @@ const projects = [
       "Integrated Gradio interface for seamless local and browser-based generation",
       "Optimized performance for lightweight, cost-free image synthesis and real-time output",
     ],
+    url: "https://github.com/DevOm-AI/Genify",
   },
 ];
 // --- END MODIFICATION 1 ---
