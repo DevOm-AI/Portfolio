@@ -51,7 +51,7 @@ export default function Certifications() {
     <section
       id="certifications"
       ref={ref}
-      className="py-16 md:py-20 px-6 md:px-12 bg-muted/30"
+      className="py-16 md:py-20 px-6 md:px-12"
     >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}

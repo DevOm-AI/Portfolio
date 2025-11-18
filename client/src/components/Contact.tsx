@@ -35,14 +35,13 @@ const contactMethods = [
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  // --- MODIFICATION 2: Added "Email" to array ---
   const externalLinks = ["Email", "GitHub", "LinkedIn", "X (Twitter)"];
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="py-16 md:py-20 px-6 md:px-12"
+      className="py-16 md:py-20 px-6 md:px-12  bg-muted/30"
     >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
