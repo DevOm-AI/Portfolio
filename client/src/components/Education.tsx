@@ -26,7 +26,7 @@ export default function Education() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="education" ref={ref} className="py-16 md:py-20 px-6 md:px-12">
+    <section id="education" ref={ref} className="py-16 md:py-20 px-6 md:px-12  bg-muted/30">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10 space-y-2">
