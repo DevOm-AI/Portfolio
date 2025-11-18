@@ -16,10 +16,10 @@ export default function Portfolio() {
         <Hero />
         <Skills />
         <Projects />
+        <ResearchPapers />
         <Experience />
         <Education />
         <Certifications />
-        <ResearchPapers />
         <Contact />
       </main>
     </div>
