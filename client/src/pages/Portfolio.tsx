@@ -6,6 +6,7 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Certifications from "@/components/Certifications";
+import ResearchPapers from "@/components/ResearchPapers";
 
 export default function Portfolio() {
   return (
@@ -18,6 +19,7 @@ export default function Portfolio() {
         <Experience />
         <Education />
         <Certifications />
+        <ResearchPapers />
         <Contact />
       </main>
     </div>
