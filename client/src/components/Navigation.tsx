@@ -3,17 +3,16 @@ import { useTheme } from "./ThemeProvider";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-// --- MODIFICATION HERE ---
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Research Papers", href: "#researchpapers" },
   { name: "Experience", href: "#experience" },
   { name: "Education", href: "#education" },
-  { name: "Certifications", href: "#certifications" }, // <-- ADDED THIS
+  { name: "Certifications", href: "#certifications" }, 
   { name: "Contact", href: "#contact" },
 ];
-// --- END MODIFICATION ---
 
 export default function Navigation() {
   const { theme, setTheme } = useTheme();
