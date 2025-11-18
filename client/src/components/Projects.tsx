@@ -17,6 +17,17 @@ const projects = [
     url: "https://github.com/DevOm-AI/Face-Recognition-Attendance-System",
   },
   {
+    title: "ShopNPoint",
+    date: "Sept-Nov 2025",
+    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Node JS", "Express JS", "MySQL (Workbench)"],
+    achievements: [
+      "Referral system awarding users tokens when their promo code is used.",
+      "Tokens can cover up to 40% of checkout value.",
+      "ML models detect promo-code fraud, unusual usage patterns, and secure transactions.",
+    ],
+    url: "https://github.com/DevOm-AI/ShopNPoint",
+  },
+  {
     title: "NGO Website",
     date: "April 2025",
     technologies: ["HTML", "CSS", "JavaScript"],
@@ -28,7 +39,7 @@ const projects = [
   },
   {
     title: "Genify",
-    date: "Nov 2025",
+    date: "Oct 2025",
     technologies: ["Python", "Hugging Face", "Gradio", "Stable Diffusion Turbo"],
     achievements: [
       "Built a fast and efficient AI-powered image generator using Stable Diffusion Turbo",
