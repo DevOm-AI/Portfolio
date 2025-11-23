@@ -59,7 +59,7 @@ export default function Hero() {
             data-testid="button-email"
           >
             <a
-              href="mailto:om.shete.developer@gmail.com"
+              href="#contact"
               className="flex items-center gap-2"
             >
               <Mail className="h-4 w-4" />
