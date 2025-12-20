@@ -13,7 +13,7 @@ const projects = [
       "Automatically retrains and recovers models when data behavior changes.",
       "Supports safe model versioning and zero-downtime rollbacks.",
     ],
-    url: "https://github.com/DevOm-AI/Genify",
+    url: "https://github.com/DevOm-AI/Autonomous-ML-Reliability-Recovery-System",
   },
 
   {
@@ -25,7 +25,7 @@ const projects = [
       "Detects bias across user segments and flags risky model behavior.",
       "Provides explainable alerts for transparent AI decisions.",
     ],
-    url: "https://github.com/DevOm-AI/Genify",
+    url: "https://github.com/DevOm-AI/AI-Prediction-Quality-Bias-Guard-System",
   },
 
   {
@@ -60,16 +60,6 @@ const projects = [
       "Built user-friendly GUI with live feed monitoring and CSV export",
     ],
     url: "https://github.com/DevOm-AI/Face-Recognition-Attendance-System",
-  },
-  {
-    title: "Shivaradhya Foundation NGO Website",
-    date: "April 2025",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    achievements: [
-      "Generated 25+ volunteer signups and ₹10,000 in donations within 3 weeks",
-      "Increased session duration by 40% through engaging UI redesign",
-      "Optimized for fast load times and cross-browser compatibility",
-    ],
   },
 ];
 // --- END MODIFICATION 1 ---
