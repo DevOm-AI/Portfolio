@@ -3,8 +3,53 @@ import { CheckCircle2 } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 
-// --- MODIFICATION 1: Add 'url' to the project data ---
 const projects = [
+  {
+    title: "Autonomous ML Reliability & Recovery System",
+    date: "June – July 2025",
+    technologies: ["Python", "FastAPI", "MLflow", "Docker", "Evidently AI"],
+    achievements: [
+      "Monitors live ML predictions to detect silent failures and performance drops.",
+      "Automatically retrains and recovers models when data behavior changes.",
+      "Supports safe model versioning and zero-downtime rollbacks.",
+    ],
+    url: "https://github.com/DevOm-AI/Genify",
+  },
+
+  {
+    title: "AI Prediction Quality & Bias Guard System",
+    date: "Nov – Dec 2025",
+    technologies: ["Python", "SHAP", "Fairlearn", "FastAPI", "PostgreSQL"],
+    achievements: [
+      "Checks prediction confidence and stability to block unreliable outputs.",
+      "Detects bias across user segments and flags risky model behavior.",
+      "Provides explainable alerts for transparent AI decisions.",
+    ],
+    url: "https://github.com/DevOm-AI/Genify",
+  },
+
+  {
+    title: "ShopNPoint",
+    date: "Aug - Sep 2025",
+    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Node JS", "Express JS", "MySQL (Workbench)"],
+    achievements: [
+      "Referral system awarding users tokens when their promo code is used.",
+      "Tokens can cover up to 40% of checkout value.",
+      "ML models detect promo-code fraud, unusual usage patterns, and secure transactions.",
+    ],
+    url: "https://github.com/DevOm-AI/ShopNPoint",
+  },
+  {
+    title: "Genify",
+    date: "May 2025",
+    technologies: ["Python", "Hugging Face", "Gradio", "Stable Diffusion Turbo"],
+    achievements: [
+      "Built a fast and efficient AI-powered image generator using Stable Diffusion Turbo",
+      "Integrated Gradio interface for seamless local and browser-based generation",
+      "Optimized performance for lightweight, cost-free image synthesis and real-time output",
+    ],
+    url: "https://github.com/DevOm-AI/Genify",
+  },
   {
     title: "Face Recognition Attendance System",
     date: "Feb 2023",
@@ -17,18 +62,7 @@ const projects = [
     url: "https://github.com/DevOm-AI/Face-Recognition-Attendance-System",
   },
   {
-    title: "ShopNPoint",
-    date: "Sept-Nov 2025",
-    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Node JS", "Express JS", "MySQL (Workbench)"],
-    achievements: [
-      "Referral system awarding users tokens when their promo code is used.",
-      "Tokens can cover up to 40% of checkout value.",
-      "ML models detect promo-code fraud, unusual usage patterns, and secure transactions.",
-    ],
-    url: "https://github.com/DevOm-AI/ShopNPoint",
-  },
-  {
-    title: "NGO Website",
+    title: "Shivaradhya Foundation NGO Website",
     date: "April 2025",
     technologies: ["HTML", "CSS", "JavaScript"],
     achievements: [
@@ -36,17 +70,6 @@ const projects = [
       "Increased session duration by 40% through engaging UI redesign",
       "Optimized for fast load times and cross-browser compatibility",
     ],
-  },
-  {
-    title: "Genify",
-    date: "Oct 2025",
-    technologies: ["Python", "Hugging Face", "Gradio", "Stable Diffusion Turbo"],
-    achievements: [
-      "Built a fast and efficient AI-powered image generator using Stable Diffusion Turbo",
-      "Integrated Gradio interface for seamless local and browser-based generation",
-      "Optimized performance for lightweight, cost-free image synthesis and real-time output",
-    ],
-    url: "https://github.com/DevOm-AI/Genify",
   },
 ];
 // --- END MODIFICATION 1 ---
