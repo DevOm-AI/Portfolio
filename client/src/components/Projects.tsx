@@ -5,30 +5,6 @@ import { useRef } from "react";
 
 const projects = [
   {
-    title: "Autonomous ML Reliability & Recovery System",
-    date: "June – July 2025",
-    technologies: ["Python", "FastAPI", "MLflow", "Docker", "Evidently AI"],
-    achievements: [
-      "Monitors live ML predictions to detect silent failures and performance drops.",
-      "Automatically retrains and recovers models when data behavior changes.",
-      "Supports safe model versioning and zero-downtime rollbacks.",
-    ],
-    url: "https://github.com/DevOm-AI/Autonomous-ML-Reliability-Recovery-System",
-  },
-
-  {
-    title: "AI Prediction Quality & Bias Guard System",
-    date: "Nov – Dec 2025",
-    technologies: ["Python", "SHAP", "Fairlearn", "FastAPI", "PostgreSQL"],
-    achievements: [
-      "Checks prediction confidence and stability to block unreliable outputs.",
-      "Detects bias across user segments and flags risky model behavior.",
-      "Provides explainable alerts for transparent AI decisions.",
-    ],
-    url: "https://github.com/DevOm-AI/AI-Prediction-Quality-Bias-Guard-System",
-  },
-
-  {
     title: "ShopNPoint",
     date: "Aug - Sep 2025",
     technologies: ["React JS", "Tailwind CSS", "JavaScript", "Node JS", "Express JS", "MySQL (Workbench)"],
