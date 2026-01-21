@@ -6,8 +6,8 @@ import { useRef } from "react";
 const projects = [
   {
     title: "ShopNPoint",
-    date: "Aug - Sep 2025",
-    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Node JS", "Express JS", "MySQL (Workbench)"],
+    date: "Sep - Nov 2025",
+    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
     achievements: [
       "Referral system awarding users tokens when their promo code is used.",
       "Tokens can cover up to 40% of checkout value.",
@@ -29,7 +29,7 @@ const projects = [
   {
     title: "Face Recognition Attendance System",
     date: "Feb 2023",
-    technologies: ["Python", "OpenCV", "SQLite"],
+    technologies: ["Python", "OpenCV", "Haar Cascade Algorithm", "SQLite"],
     achievements: [
       "Automated attendance tracking with 95% accuracy using facial recognition",
       "Reduced manual processing time by 80% with real-time detection",
