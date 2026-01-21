@@ -28,11 +28,11 @@ const projects = [
   },
   {
     title: "Face Recognition Attendance System",
-    date: "Jun - July 2023",
+    date: "Jun - July 2025",
     technologies: ["Python", "OpenCV", "Haar Cascade Algorithm", "SQLite"],
     achievements: [
-      "Automated attendance tracking with 95% accuracy using facial recognition",
-      "Reduced manual processing time by 80% with real-time detection",
+      "Automated attendance tracking with 91% accuracy using facial recognition",
+      "Reduced manual processing time by 70-80% with real-time detection",
       "Built user-friendly GUI with live feed monitoring and CSV export",
     ],
     url: "https://github.com/DevOm-AI/Face-Recognition-Attendance-System",
