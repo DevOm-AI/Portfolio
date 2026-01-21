@@ -75,7 +75,7 @@ export default function Hero() {
             data-testid="button-resume"
           >
             <a
-              href="https://drive.google.com/file/d/1UGuxNSy3Kp70mH0khZF648rqiPhuxAvz/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1lVivRp9BUPOJrOH-pq0RKCKnvnjtWmDt/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"
