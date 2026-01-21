@@ -28,7 +28,7 @@ const projects = [
   },
   {
     title: "Face Recognition Attendance System",
-    date: "Feb 2023",
+    date: "Jun - July 2023",
     technologies: ["Python", "OpenCV", "Haar Cascade Algorithm", "SQLite"],
     achievements: [
       "Automated attendance tracking with 95% accuracy using facial recognition",
