@@ -7,7 +7,7 @@ const skillCategories = [
   {
     title: "Languages",
     icon: Code2,
-    skills: ["Python", "JavaScript", "SQL", "HTML/CSS"],
+    skills: ["Python", "JavaScript", "SQL", "HTML/CSS", "C++"],
   },
   {
     title: "Tools",
@@ -17,12 +17,12 @@ const skillCategories = [
   {
     title: "Databases",
     icon: Database,
-    skills: ["MySQL", "PostgreSQL", "MongoDB"],
+    skills: ["MySQL", "PostgreSQL", "SQLite"],
   },
   {
     title: "Expertise",
     icon: GraduationCap,
-    skills: ["AI/ML", "Data Science", "React JS", "Debugging", "Cloud", "System Design"],
+    skills: ["React JS", "Tailwind CSS", "Node JS", "Debugging", "System Design"],
   },
 ];
 
