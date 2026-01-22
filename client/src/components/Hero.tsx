@@ -21,7 +21,7 @@ export default function Hero() {
             Om Shete
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-            AI/ML Engineer
+            Full-Stack Developer
           </p>
         </div>
 
