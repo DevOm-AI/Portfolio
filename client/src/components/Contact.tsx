@@ -22,7 +22,7 @@ const contactMethods = [
     icon: Linkedin,
     label: "LinkedIn",
     value: "om-shete-ai-developer",
-    href: "https://www.linkedin.com/in/om-shete-ai-developer",
+    href: "https://www.linkedin.com/in/devom-ai/",
   },
   {
     icon: Twitter,
