@@ -21,7 +21,7 @@ const contactMethods = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "om-shete-ai-developer",
+    value: "devom-ai",
     href: "https://www.linkedin.com/in/devom-ai/",
   },
   {
