@@ -6,6 +6,11 @@ import { useRef } from "react";
 // --- MODIFICATION 1: Updated certifications array ---
 const certifications = [
   {
+    title: "Quora System Design",
+    issuer: "Scaler",
+    url: "https://drive.google.com/file/d/1dOBOWbZKTd2gYv7EWWOyKZENaYde9J4y/view?usp=drive_link"
+  },
+  {
     title: "Cyber Security Analyst",
     issuer: "TCS Forage",
     url: "https://drive.google.com/file/d/11Omlr6bs2iZ3D7X7Zo8h0tcr-pJO7QHN/view?usp=drive_link",
