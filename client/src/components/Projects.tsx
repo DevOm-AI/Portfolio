@@ -5,6 +5,17 @@ import { useRef } from "react";
 
 const projects = [
   {
+    title: "Resume Roaster",
+    date: "Mar 2026",
+    technologies: ["React JS", "Tailwind CSS", "FastAPI", "Groq AI", "Prompt Engineering"],
+    achievements: [
+      "AI-powered tool that brutally roasts resumes with humorous feedback using Groq LLM",
+      "Supports English and Hinglish modes with meme-style roast scoring",
+      "Built with React + Tailwind frontend and FastAPI backend, deployed on Vercel & Render",
+    ],
+    url: "https://resume-roaster-eight-xi.vercel.app/",
+  },
+  {
     title: "ShopNPoint",
     date: "Sep - Nov 2025",
     technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
