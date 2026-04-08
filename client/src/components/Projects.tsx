@@ -5,6 +5,28 @@ import { useRef } from "react";
 
 const projects = [
   {
+    title: "Linkra — Distributed URL Shortener & Click Analytics Engine",
+    date: "March 2026",
+    technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Node.js", "React", "Docker", "Redis Streams"],
+    achievements: [
+      "Redis → PostgreSQL cache-aside pipeline; sub-10ms redirects, 2000x throughput via k6.",
+      "Async Redis Streams consumer decoupled analytics from redirect path; zero latency impact.",
+      "Dockerized 4 services; resolved Snowflake ID precision loss via Pydantic string serialization.",
+    ],
+    url: "https://github.com/devOm-AI/linkra",
+  },
+  {
+    title: "ShopNPoint",
+    date: "Sep - Dec 2025",
+    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
+    achievements: [
+      "Referral system awarding users tokens when their promo code is used.",
+      "Tokens can cover up to 40% of checkout value.",
+      "ML models detect promo-code fraud, unusual usage patterns, and secure transactions.",
+    ],
+    url: "https://github.com/DevOm-AI/ShopNPoint",
+  },
+  {
     title: "Resume Roaster",
     date: "Mar 2026",
     technologies: ["React JS", "Tailwind CSS", "FastAPI", "Groq AI", "Prompt Engineering"],
@@ -14,17 +36,6 @@ const projects = [
       "Built with React + Tailwind frontend and FastAPI backend, deployed on Vercel & Render",
     ],
     url: "https://resume-roaster-eight-xi.vercel.app/",
-  },
-  {
-    title: "ShopNPoint",
-    date: "Sep - Nov 2025",
-    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
-    achievements: [
-      "Referral system awarding users tokens when their promo code is used.",
-      "Tokens can cover up to 40% of checkout value.",
-      "ML models detect promo-code fraud, unusual usage patterns, and secure transactions.",
-    ],
-    url: "https://github.com/DevOm-AI/ShopNPoint",
   },
   {
     title: "Genify",
@@ -111,7 +122,7 @@ export default function Projects() {
 
                 {/* Achievements */}
                 <ul className="space-y-2 flex-1">
-                  {project.achievements.map((achievement, i) => (
+                  {project.achievements?.map((achievement, i) => (
                     <li key={i} className="flex gap-2 text-xs leading-relaxed">
                       <CheckCircle2 className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">
