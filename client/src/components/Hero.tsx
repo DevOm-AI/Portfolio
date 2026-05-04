@@ -90,7 +90,7 @@ export default function Hero() {
         {/* Education Highlight */}
         <div className="pt-6 animate-in fade-in duration-700 delay-500">
           <p className="text-xs text-muted-foreground">
-            B.E. AI & Data Science • CGPA 8.29 • Pune
+            B.E. in AI & Data Science • CGPA 8.05 • Pune
           </p>
         </div>
 

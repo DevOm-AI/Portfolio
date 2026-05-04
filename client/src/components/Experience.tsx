@@ -5,13 +5,13 @@ import { useRef } from "react";
 
 const experience = {
   company: "Shivaaradhya Foundation",
-  role: "Front-End Engineer Intern",
+  role: "Full Stack Developer Intern",
   duration: "Jan 2025 – Apr 2025",
   location: "Pune, MH",
   achievements: [
-    "Increased session duration by 40% through UI redesign",
-    "Improved page load speed by 30% with responsive optimizations",
-    "Reduced bounce rate by 25% via iterative UX improvements",
+    "Redesigned UI architecture, increasing session duration by 40% across key user flows",
+    "Optimized frontend performance (responsive rendering, asset handling), reducing load time by 30%",
+    "Improved UX through iterative design refinements, decreasing bounce rate by 25%",
   ],
 };
 

@@ -9,7 +9,7 @@ const education = [
     degree: "Bachelor of Engineering (Artificial Intelligence and Data Science)",
     duration: "Sep. 2023 – June 2026",
     location: "Pune, MH",
-    cgpa: "8.29",
+    cgpa: "8.05",
   },
   {
     institution: "Yogeshwari Polytechnic",
