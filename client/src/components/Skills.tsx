@@ -12,7 +12,7 @@ const skillCategories = [
   {
     title: "Tools",
     icon: Wrench,
-    skills: ["VS Code", "GitHub", "Postman", "Android Studio"],
+    skills: ["VS Code", "GitHub", "Postman", "Docker", "Vercel", "Render"],
   },
   {
     title: "Databases",
