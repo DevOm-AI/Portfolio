@@ -3,17 +3,30 @@ import { Briefcase } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 
-const experience = {
-  company: "Shivaaradhya Foundation",
-  role: "Full Stack Developer Intern",
-  duration: "Jan 2025 – Apr 2025",
-  location: "Pune, MH",
-  achievements: [
-    "Redesigned UI architecture, increasing session duration by 40% across key user flows",
-    "Optimized frontend performance (responsive rendering, asset handling), reducing load time by 30%",
-    "Improved UX through iterative design refinements, decreasing bounce rate by 25%",
-  ],
-};
+const experience = [
+  {
+    company: "WhatBytes",
+    role: "Backend Engineering Intern",
+    duration: "May 2026 - Present",
+    location: "Remote",
+    achievements: [
+      "Building and maintaining scalable backend services using modern web technologies",
+      "Working with APIs, database operations, and backend architecture workflows",
+      "Collaborating with the engineering team on feature development, debugging, and optimization",
+    ],
+  },
+  {
+    company: "Shivaaradhya Foundation",
+    role: "Full Stack Developer Intern",
+    duration: "Jan 2025 – Apr 2025",
+    location: "Pune, MH (Remote)",
+    achievements: [
+      "Redesigned UI architecture, increasing session duration by 40% across key user flows",
+      "Optimized frontend performance (responsive rendering, asset handling), reducing load time by 30%",
+      "Improved UX through iterative design refinements, decreasing bounce rate by 25%",
+    ],
+  },
+];
 
 export default function Experience() {
   const ref = useRef<HTMLElement>(null);
@@ -39,49 +52,52 @@ export default function Experience() {
           </h2>
         </div>
 
-        {/* Experience Card */}
-        <div className="max-w-3xl mx-auto">
-          <Card
-            // --- MODIFICATION: Added hover effects ---
-            className={`p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-              isInView
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-8"
-            }`}
-            // --- END MODIFICATION ---
-            data-testid="card-experience"
-          >
-            <div className="flex gap-4">
-              <div className="p-2.5 bg-primary text-primary-foreground rounded-md h-fit">
-                <Briefcase className="h-4 w-4" />
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 space-y-3">
-                <div>
-                  <h3 className="text-base font-semibold">
-                    {experience.role}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {experience.company}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-1 text-xs text-muted-foreground">
-                    <span className="font-mono">{experience.duration}</span>
-                    <span>•</span>
-                    <span>{experience.location}</span>
-                  </div>
+        {/* Experience Cards */}
+        <div className="max-w-3xl mx-auto space-y-6">
+          {experience.map((exp, idx) => (
+            <Card
+              key={idx}
+              className={`p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                isInView
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-8"
+              }`}
+              data-testid="card-experience"
+            >
+              <div className="flex gap-4">
+                <div className="p-2.5 bg-primary text-primary-foreground rounded-md h-fit">
+                  <Briefcase className="h-4 w-4" />
                 </div>
 
-                <ul className="space-y-1.5">
-                  {experience.achievements.map((achievement, index) => (
-                    <li key={index} className="text-xs text-muted-foreground leading-relaxed">
-                      • {achievement}
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex-1 space-y-3">
+                  <div>
+                    <h3 className="text-base font-semibold">{exp.role}</h3>
+
+                    <p className="text-sm text-muted-foreground">
+                      {exp.company}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mt-1 text-xs text-muted-foreground">
+                      <span className="font-mono">{exp.duration}</span>
+                      <span>•</span>
+                      <span>{exp.location}</span>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-1.5">
+                    {exp.achievements.map((achievement, index) => (
+                      <li
+                        key={index}
+                        className="text-xs text-muted-foreground leading-relaxed"
+                      >
+                        • {achievement}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
