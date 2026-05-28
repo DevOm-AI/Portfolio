@@ -5,8 +5,19 @@ import { useRef } from "react";
 
 const projects = [
   {
+    title: "NoiseLense",
+    date: "May 2026",
+    technologies: ["React", "TailwindCSS", "FastAPI", "Python", "Groq API", "Framer Motion"],
+    achievements: [
+      "Full-stack tool that analyzes internet content (tweets, headlines, captions) for embedded psychological manipulation tactics.",
+      "Scores content across 9 vectors — Fear Exploitation, Outrage Engineering, Curiosity Gaps, and more — each rated 0–100.",
+      "Returns detected trigger phrases and a forensic summary written with clinical neutrality, not moral judgment.",
+    ],
+    url: "https://github.com/DevOm-AI/NoiseLens",
+  },
+  {
     title: "Linkra — Distributed URL Shortener & Click Analytics Engine",
-    date: "March 2026",
+    date: "Mar 2026",
     technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Node.js", "React", "Docker", "Redis Streams"],
     achievements: [
       "Redis → PostgreSQL cache-aside pipeline; sub-10ms redirects, 2000x throughput via k6.",
@@ -16,19 +27,8 @@ const projects = [
     url: "https://github.com/devOm-AI/linkra",
   },
   {
-    title: "ShopNPoint",
-    date: "Sep - Dec 2025",
-    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
-    achievements: [
-      "Referral system awarding users tokens when their promo code is used.",
-      "Tokens can cover up to 40% of checkout value.",
-      "ML models detect promo-code fraud, unusual usage patterns, and secure transactions.",
-    ],
-    url: "https://github.com/DevOm-AI/ShopNPoint",
-  },
-  {
     title: "Resume Roaster",
-    date: "Mar 2026",
+    date: "Feb 2026",
     technologies: ["React JS", "Tailwind CSS", "FastAPI", "Groq AI", "Prompt Engineering"],
     achievements: [
       "AI-powered tool that brutally roasts resumes with humorous feedback using Groq LLM",
@@ -36,6 +36,17 @@ const projects = [
       "Built with React + Tailwind frontend and FastAPI backend, deployed on Vercel & Render",
     ],
     url: "https://resume-roaster-eight-xi.vercel.app/",
+  },
+  {
+    title: "ShopNPoint",
+    date: "Sep - Nov 2025",
+    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
+    achievements: [
+      "Referral system awarding users tokens when their promo code is used.",
+      "Tokens can cover up to 40% of checkout value.",
+      "ML models detect promo-code fraud, unusual usage patterns, and secure transactions.",
+    ],
+    url: "https://github.com/DevOm-AI/ShopNPoint",
   },
   {
     title: "Genify",
@@ -50,7 +61,7 @@ const projects = [
   },
   {
     title: "Face Recognition Attendance System",
-    date: "Jun - July 2025",
+    date: "Aug - Sep 2023",
     technologies: ["Python", "OpenCV", "Haar Cascade Algorithm", "SQLite"],
     achievements: [
       "Automated attendance tracking with 91% accuracy using facial recognition",
@@ -60,7 +71,7 @@ const projects = [
     url: "https://github.com/DevOm-AI/Face-Recognition-Attendance-System",
   },
 ];
-// --- END MODIFICATION 1 ---
+
 
 export default function Projects() {
   const ref = useRef<HTMLElement>(null);

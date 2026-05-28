@@ -16,8 +16,7 @@ const education = [
     degree: "Diploma in Computer Engineering",
     duration: "Jan. 2021 – July 2023",
     location: "Ambajogai, MH",
-    cgpa: null,
-    courses: null,
+    cgpa: "8.71",
   },
 ];
 
