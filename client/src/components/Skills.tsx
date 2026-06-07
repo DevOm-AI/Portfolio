@@ -48,7 +48,15 @@ export default function Skills() {
           >
             Skills
           </h2>
+          <p
+            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            A toolkit built one late-night debug session at a time.
+          </p>
         </div>
+
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -50,6 +50,13 @@ export default function Experience() {
           >
             Experience
           </h2>
+          <p
+            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            Where side-project energy met production-level responsibility.
+          </p>
         </div>
 
         {/* Experience Cards */}

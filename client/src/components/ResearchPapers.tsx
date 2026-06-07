@@ -40,6 +40,13 @@ export default function ResearchPapers() {
             <BookOpen className="h-5 w-5" />
             Research Papers
           </h2>
+          <p
+            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            Some questions needed more than a weekend project to answer.
+          </p>
         </div>
 
         {/* Papers Grid */}

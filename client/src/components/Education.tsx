@@ -38,6 +38,13 @@ export default function Education() {
           >
             Education
           </h2>
+          <p
+            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            Classroom gave me the map. The terminal gave me the territory.
+          </p>
         </div>
 
         <div className="space-y-8">

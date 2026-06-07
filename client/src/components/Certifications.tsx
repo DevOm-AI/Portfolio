@@ -71,6 +71,13 @@ export default function Certifications() {
             <Award className="h-5 w-5" />
             Certifications
           </h2>
+          <p
+            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            Certified. Occasionally. The skills were already there.
+          </p>
         </div>
 
         {/* --- MODIFICATION 2: Mapped cards wrapped in <a> tags --- */}

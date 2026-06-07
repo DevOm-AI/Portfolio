@@ -14,11 +14,11 @@ export default function Portfolio() {
       <Navigation />
       <main>
         <Hero />
+        <Experience />
         <Skills />
         <Projects />
-        <ResearchPapers />
-        <Experience />
         <Education />
+        <ResearchPapers />
         <Certifications />
         <Contact />
       </main>

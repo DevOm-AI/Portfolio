@@ -9,7 +9,6 @@ const contactMethods = [
     icon: Mail,
     label: "Email",
     value: "om.shete.developer@gmail.com",
-    // --- MODIFICATION 1: Updated href ---
     href: "https://mail.google.com/mail/?view=cm&fs=1&to=om.shete.developer@gmail.com",
   },
   {
@@ -55,6 +54,13 @@ export default function Contact() {
           >
             Contact
           </h2>
+          <p
+            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            The only section where I'm waiting on *you* to push first.
+          </p>
         </div>
 
         {/* Contact Cards */}
