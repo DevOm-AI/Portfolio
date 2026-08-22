@@ -23,14 +23,14 @@ export default function Hero() {
           </h1>
           {/* Subtitle: lighter weight + muted color for visual hierarchy */}
           <p className="text-lg md:text-xl font-normal text-muted-foreground/80 tracking-wide animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-            Backend Developer &amp; AI Engineer
+            Software Engineer &amp; Backend Focus
           </p>
         </div>
 
         {/* Education Highlight */}
         <div className="animate-in fade-in duration-700 delay-300">
           <p className="text-xs tracking-widest uppercase text-muted-foreground/60">
-            B.E. in AI &amp; Data Science &nbsp;·&nbsp; CGPA 8.05 &nbsp;·&nbsp; Pune
+            B.E. in AI &amp; Data Science &nbsp;·&nbsp; CGPA 8.14 &nbsp;·&nbsp; FIRST CLASS WITH DISTINCTION &nbsp;·&nbsp; Pune
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function Hero() {
             data-testid="button-resume"
           >
             <a
-              href="https://drive.google.com/file/d/1x2xt5poK14kZ949OBKVW2KPgPcwAsUji/view?usp=sharing"
+              href="https://drive.google.com/file/d/1TfW8g0UCUklG8CKTqrX2QxHMUBlpqz2c/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"

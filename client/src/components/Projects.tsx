@@ -5,6 +5,42 @@ import { useRef } from "react";
 
 const projects = [
   {
+    title: "Aegis — Financial Reconciliation Platform",
+    date: "(In Progress)",
+    featured: true,
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "RabbitMQ", "Redis", "Docker"],
+    achievements: [
+      "Built idempotent event ingestion with transactional processing, preventing duplicate reconciliation on retries.",
+      "Used fixed-precision decimals and append-only audit trails to preserve financial correctness and traceability.",
+      "Built async reconciliation workflows with RabbitMQ and Redis, decoupling ingestion from downstream processing.",
+    ],
+    url: "https://github.com/Ashwanti/Aegis",
+  },
+  {
+    title: "Linkra — Distributed URL Shortener & Analytics Engine",
+    date: "Mar 2026",
+    featured: true,
+    technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Node.js", "React", "Docker", "Redis Streams"],
+    achievements: [
+      "Built a Redis → PostgreSQL cache-aside architecture delivering sub-10ms redirects at 2,000 requests/second under load testing.",
+      "Decoupled click analytics from the redirect path using Redis Streams and an asynchronous Node.js consumer, eliminating analytics work from the critical request path.",
+      "Dockerized the distributed services and resolved Snowflake ID precision loss across the Python → PostgreSQL → JavaScript boundary using explicit serialization.",
+    ],
+    url: "https://github.com/devOm-AI/linkra",
+  },
+  {
+    title: "ShopNPoint",
+    date: "Sep – Nov 2025",
+    featured: true,
+    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
+    achievements: [
+      "Built a token-based referral and redemption system where promotional codes generate tokens redeemable for up to 40% of cart value.",
+      "Implemented ML-based fraud detection to identify abnormal promotional-code usage and suspicious redemption patterns.",
+      "Built the React frontend and Python backend with transactional checkout and referral workflows.",
+    ],
+    url: "https://github.com/DevOm-AI/ShopNPoint",
+  },
+  {
     title: "NoiseLense",
     date: "May 2026",
     featured: false,
@@ -17,40 +53,16 @@ const projects = [
     url: "https://github.com/DevOm-AI/NoiseLens",
   },
   {
-    title: "Linkra — Distributed URL Shortener & Analytics Engine",
-    date: "Mar 2026",
-    featured: true,
-    technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Node.js", "React", "Docker", "Redis Streams"],
-    achievements: [
-      "Redis → PostgreSQL cache-aside pipeline delivering sub-10ms redirects at 2000x throughput.",
-      "Async Redis Streams decouple analytics from redirect path — zero latency impact.",
-      "Dockerized 4 services; fixed Snowflake ID precision loss via Pydantic serialization.",
-    ],
-    url: "https://github.com/devOm-AI/linkra",
-  },
-  {
     title: "Resume Roaster",
     date: "Feb 2026",
     featured: false,
     technologies: ["React JS", "Tailwind CSS", "FastAPI", "Groq AI", "Prompt Engineering"],
     achievements: [
-      "AI tool that roasts resumes with humorous, brutally honest feedback via Groq LLM.",
-      "Supports English & Hinglish with meme-style roast scoring.",
-      "React + Tailwind frontend, FastAPI backend — deployed on Vercel & Render.",
+      "Built an AI-powered resume analysis tool using React, FastAPI, and Groq LLMs to generate structured, role-aware feedback.",
+      "Implemented English and Hinglish analysis with scoring across resume quality dimensions and actionable improvement suggestions.",
+      "Deployed the React frontend and FastAPI backend independently on Vercel and Render.",
     ],
     url: "https://resume-roaster-eight-xi.vercel.app/",
-  },
-  {
-    title: "ShopNPoint",
-    date: "Sep – Nov 2025",
-    featured: true,
-    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
-    achievements: [
-      "Referral system that awards tokens when a promo code is used at checkout.",
-      "Tokens cover up to 40% of cart value, driving retention and repeat purchases.",
-      "ML models detect promo-code fraud and flag unusual usage patterns in real time.",
-    ],
-    url: "https://github.com/DevOm-AI/ShopNPoint",
   },
   {
     title: "Genify",
@@ -58,9 +70,8 @@ const projects = [
     featured: false,
     technologies: ["Python", "Hugging Face", "Gradio", "Stable Diffusion Turbo"],
     achievements: [
-      "AI image generator built on Stable Diffusion Turbo for fast, cost-free synthesis.",
-      "Gradio interface supports both local and browser-based generation seamlessly.",
-      "Optimized for lightweight real-time output with no API costs.",
+      "Built a lightweight AI image-generation application using Stable Diffusion Turbo with a browser-based Gradio interface.",
+      "Optimized the application for low-cost local generation without relying on paid image-generation APIs.",
     ],
     url: "https://github.com/DevOm-AI/Genify",
   },
@@ -70,9 +81,8 @@ const projects = [
     featured: false,
     technologies: ["Python", "OpenCV", "Haar Cascade Algorithm", "SQLite"],
     achievements: [
-      "Automated attendance tracking at 91% accuracy using real-time facial recognition.",
-      "Reduced manual processing time by 70–80% with live feed detection.",
-      "GUI with live monitoring, SQLite storage, and one-click CSV export.",
+      "Built a real-time face-recognition attendance system using OpenCV, achieving 91% recognition accuracy on the project dataset.",
+      "Automated attendance logging with SQLite storage, live monitoring, and CSV export, reducing manual processing by 70–80%.",
     ],
     url: "https://github.com/DevOm-AI/Face-Recognition-Attendance-System",
   },

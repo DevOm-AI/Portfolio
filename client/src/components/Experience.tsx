@@ -10,9 +10,9 @@ const experience = [
     duration: "May 2026 - Present",
     location: "Remote",
     achievements: [
-      "Building and maintaining scalable backend services using modern web technologies",
-      "Working with APIs, database operations, and backend architecture workflows",
-      "Collaborating with the engineering team on feature development, debugging, and optimization",
+      "Integrated four ATS platforms—Greenhouse, Lever, Workday, and SAP SuccessFactors—into MeetAI, handling provider-specific authentication, candidate/interview flows, and API contracts.",
+      "Built B2B partner APIs with API-key authentication and HMAC-signed webhooks, and integrated Stripe payment processing for production workflows.",
+      "Cut a core Calling Agent API’s latency by 67% (~12s → ~4s) by profiling the request path and moving non-critical downstream work to asynchronous processing.",
     ],
   },
   {
@@ -21,9 +21,9 @@ const experience = [
     duration: "Jan 2025 – Apr 2025",
     location: "Pune, MH (Remote)",
     achievements: [
-      "Redesigned UI architecture, increasing session duration by 40% across key user flows",
-      "Optimized frontend performance (responsive rendering, asset handling), reducing load time by 30%",
-      "Improved UX through iterative design refinements, decreasing bounce rate by 25%",
+      "Built production registration and live leaderboard systems with React, Node.js, and PostgreSQL, supporting 2,000+ concurrent students across 5 simultaneous events.",
+      "Normalized relational schemas and added indexing, reducing manual data reconciliation from 3 hours to under 20 minutes per event cycle.",
+      "Diagnosed API failures, race conditions, and deployment issues during live competitions while maintaining zero downtime across 3 event windows.",
     ],
   },
 ];

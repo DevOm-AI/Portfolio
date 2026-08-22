@@ -7,22 +7,32 @@ const skillCategories = [
   {
     title: "Languages",
     icon: Code2,
-    skills: ["Python", "JavaScript", "SQL", "HTML/CSS", "C++"],
+    skills: ["Python", "Java", "JavaScript", "SQL"],
+  },
+  {
+    title: "Backend",
+    icon: Code2,
+    skills: ["Spring Boot", "FastAPI", "Node.js", "REST APIs", "Webhooks", "JWT", "HMAC"],
+  },
+  {
+    title: "Databases & Infrastructure",
+    icon: Database,
+    skills: ["MySQL", "PostgreSQL", "Redis", "Docker", "Docker Compose"],
+  },
+  {
+    title: "Frontend",
+    icon: GraduationCap,
+    skills: ["React.JS", "Next.JS", "Tailwind CSS"],
+  },
+  {
+    title: "Engineering",
+    icon: Wrench,
+    skills: ["Async Processing", "API Design", "Caching", "Messaging", "Testing", "Git"],
   },
   {
     title: "Tools",
     icon: Wrench,
     skills: ["VS Code", "GitHub", "Postman", "Docker", "Vercel", "Render"],
-  },
-  {
-    title: "Databases",
-    icon: Database,
-    skills: ["MySQL", "PostgreSQL", "SQLite"],
-  },
-  {
-    title: "Expertise",
-    icon: GraduationCap,
-    skills: ["React JS", "Tailwind CSS", "Node JS", "Debugging", "System Design"],
   },
 ];
 
@@ -59,7 +69,7 @@ export default function Skills() {
 
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
