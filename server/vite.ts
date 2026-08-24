@@ -78,8 +78,14 @@ export function serveStatic(app: Express) {
 
   app.use(express.static(distPath));
 
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
+  // fall through to index.html only for client-side routes (no file extension).
+  // A request for a missing/stale asset (e.g. an old cache-busted filename) must
+  // 404 for real, not silently receive index.html's HTML body with a 200 status -
+  // that's what turns a stale asset request into "Unexpected token '<'" in the browser.
+  app.use("*", (req, res, next) => {
+    if (path.extname(req.originalUrl) !== "") {
+      return next();
+    }
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }

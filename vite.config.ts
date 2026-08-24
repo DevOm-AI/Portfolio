@@ -24,7 +24,10 @@ export default defineConfig({
   build: {
     // --- FIX 2 ---
     // Tell Vite to build the 'dist' folder in the *project root* // (one level up from the 'client' folder)
-    outDir: '../dist',
+    outDir: '../dist/public',
+    // outDir is outside vite's root ('client'), so Vite won't auto-empty it -
+    // without this, stale hashed assets from previous builds pile up in dist/public/assets.
+    emptyOutDir: true,
   }
 })
 
