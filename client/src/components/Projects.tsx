@@ -1,9 +1,22 @@
-import { Card } from "@/components/ui/card";
-import { CheckCircle2 } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
-import { useRef } from "react";
+import { Section, Bullets, Tags } from "./Section";
+import { ExternalLink } from "./ExternalLink";
+import { Metrics, type Metric } from "./Metrics";
+import { FlowDiagram, type FlowGraph } from "./FlowDiagram";
+import { FadeIn } from "./motion";
+import { cn } from "@/lib/utils";
 
-const projects = [
+export type Project = {
+  title: string;
+  date: string;
+  featured: boolean;
+  technologies: string[];
+  achievements: string[];
+  url: string;
+  metrics?: Metric[];
+  flow: FlowGraph;
+};
+
+export const projects: Project[] = [
   {
     title: "Linkra — Distributed URL Shortener & Analytics Engine",
     date: "Mar 2026",
@@ -15,6 +28,32 @@ const projects = [
       "Dockerized the distributed services and resolved Snowflake ID precision loss across the Python → PostgreSQL → JavaScript boundary using explicit serialization.",
     ],
     url: "https://github.com/devOm-AI/linkra",
+    metrics: [
+      { value: "<10ms", label: "redirects" },
+      { value: "2,000", label: "requests/second under load" },
+    ],
+    flow: {
+      title: "Linkra architecture",
+      nodes: [
+        { id: "client", label: "client", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "api", label: "FastAPI", note: "Python", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "redis", label: "Redis", note: "cache-aside", at: { wide: [2, 0], narrow: [0, 2] } },
+        { id: "pg", label: "PostgreSQL", at: { wide: [3, 0], narrow: [0, 3] } },
+        { id: "streams", label: "Redis Streams", at: { wide: [2, 1], narrow: [1, 2] } },
+        { id: "consumer", label: "Node.js", note: "async consumer", at: { wide: [3, 1], narrow: [1, 3] } },
+      ],
+      edges: [
+        { from: "client", to: "api" },
+        { from: "api", to: "redis" },
+        { from: "redis", to: "pg", label: "miss" },
+        { from: "api", to: "streams", async: true, bend: { wide: "vh", narrow: "hv" } },
+        { from: "streams", to: "consumer", async: true },
+      ],
+      legend: [
+        { label: "redirect path" },
+        { label: "click analytics · async", dashed: true },
+      ],
+    },
   },
   {
     title: "ShopNPoint",
@@ -27,6 +66,25 @@ const projects = [
       "Built the React frontend and Python backend with transactional checkout and referral workflows.",
     ],
     url: "https://github.com/DevOm-AI/ShopNPoint",
+    metrics: [{ value: "40%", label: "max of cart value redeemable" }],
+    flow: {
+      title: "ShopNPoint architecture",
+      nodes: [
+        { id: "web", label: "React", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "api", label: "Python backend", note: "checkout · referral", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "db", label: "MySQL", note: "transactional", at: { wide: [2, 0], narrow: [0, 2] } },
+        { id: "fraud", label: "fraud detection", note: "ML-based", at: { wide: [2, 1], narrow: [1, 2] } },
+      ],
+      edges: [
+        { from: "web", to: "api" },
+        { from: "api", to: "db" },
+        { from: "api", to: "fraud", tone: "secondary", bend: { wide: "vh", narrow: "hv" } },
+      ],
+      legend: [
+        { label: "checkout & referral workflows" },
+        { label: "fraud detection", tone: "secondary" },
+      ],
+    },
   },
   {
     title: "NoiseLense",
@@ -39,6 +97,20 @@ const projects = [
       "Returns trigger phrases + a forensic summary with clinical neutrality.",
     ],
     url: "https://github.com/DevOm-AI/NoiseLens",
+    metrics: [{ value: "9", label: "vectors scored 0–100" }],
+    flow: {
+      title: "NoiseLense architecture",
+      nodes: [
+        { id: "web", label: "React", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "api", label: "FastAPI", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "llm", label: "Groq API", at: { wide: [2, 0], narrow: [0, 2] } },
+      ],
+      edges: [
+        { from: "web", to: "api" },
+        { from: "api", to: "llm" },
+      ],
+      caption: "returns → 9 vector scores (0–100) · trigger phrases · forensic summary",
+    },
   },
   {
     title: "Resume Roaster",
@@ -51,6 +123,18 @@ const projects = [
       "Deployed the React frontend and FastAPI backend independently on Vercel and Render.",
     ],
     url: "https://resume-roaster-eight-xi.vercel.app/",
+    flow: {
+      title: "Resume Roaster architecture",
+      nodes: [
+        { id: "web", label: "React", note: "Vercel", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "api", label: "FastAPI", note: "Render", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "llm", label: "Groq LLM", at: { wide: [2, 0], narrow: [0, 2] } },
+      ],
+      edges: [
+        { from: "web", to: "api" },
+        { from: "api", to: "llm" },
+      ],
+    },
   },
   {
     title: "Genify",
@@ -62,6 +146,18 @@ const projects = [
       "Optimized the application for low-cost local generation without relying on paid image-generation APIs.",
     ],
     url: "https://github.com/DevOm-AI/Genify",
+    flow: {
+      title: "Genify architecture",
+      nodes: [
+        { id: "browser", label: "browser", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "ui", label: "Gradio", note: "UI", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "model", label: "Stable Diffusion", note: "Turbo · local", at: { wide: [2, 0], narrow: [0, 2] } },
+      ],
+      edges: [
+        { from: "browser", to: "ui" },
+        { from: "ui", to: "model" },
+      ],
+    },
   },
   {
     title: "Face Recognition Attendance System",
@@ -73,111 +169,100 @@ const projects = [
       "Automated attendance logging with SQLite storage, live monitoring, and CSV export, reducing manual processing by 70–80%.",
     ],
     url: "https://github.com/DevOm-AI/Face-Recognition-Attendance-System",
+    metrics: [
+      { value: "91%", label: "recognition accuracy" },
+      { value: "70–80%", label: "less manual processing" },
+    ],
+    flow: {
+      title: "Face Recognition Attendance System architecture",
+      nodes: [
+        { id: "cam", label: "webcam", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "cv", label: "OpenCV", note: "Haar Cascade", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "db", label: "SQLite", note: "attendance log", at: { wide: [2, 0], narrow: [0, 2] } },
+        { id: "csv", label: "CSV export", at: { wide: [3, 0], narrow: [0, 3] } },
+      ],
+      edges: [
+        { from: "cam", to: "cv" },
+        { from: "cv", to: "db" },
+        { from: "db", to: "csv" },
+      ],
+    },
   },
 ];
 
 export default function Projects() {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  return (
+    <Section
+      id="projects"
+      subtitle="⚠ Bugs were harmed in the making of these projects ⚠"
+    >
+      <div className="space-y-8">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.title} project={project} index={index} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const isRepo = project.url.includes("github.com");
 
   return (
-    <section id="projects" ref={ref} className="py-16 md:py-20 px-6 md:px-12">
-      <div className="max-w-5xl mx-auto">
+    <FadeIn>
+      <article
+        className={cn("card card-lift p-5", project.featured ? "card-featured sm:p-10" : "sm:p-8")}
+        data-testid={`card-project-${index}`}
+      >
+        <header className="flex flex-wrap items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="flex items-center gap-2 text-[13px] text-secondary">
+              <span className="font-mono">{project.date}</span>
+              {project.featured && (
+                <>
+                  <span aria-hidden="true" className="text-line">—</span>
+                  <span className="font-medium">Featured</span>
+                </>
+              )}
+            </p>
+            <h3
+              className={cn(
+                "mt-2 max-w-2xl font-semibold leading-tight tracking-[-0.025em]",
+                project.featured ? "text-[24px] sm:text-[34px]" : "text-[22px] sm:text-[28px]",
+              )}
+            >
+              {project.title}
+            </h3>
+          </div>
+          <ExternalLink
+            href={project.url}
+            label={`${project.title} ${isRepo ? "on GitHub" : "live demo"}`}
+            className="shrink-0 rounded-full border border-line px-4 py-2 text-[14px] font-medium text-foreground transition-colors duration-200 hover:border-primary/60"
+          >
+            {isRepo ? "GitHub" : "Live"}
+          </ExternalLink>
+        </header>
 
-        {/* Section Header */}
-        <div className="text-center mb-10 space-y-2">
-          <h2
-            className={`text-2xl md:text-3xl font-semibold transition-all duration-700 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            Projects
-          </h2>
-          <p
-            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            ⚠ Bugs were harmed in the making of these projects ⚠
-          </p>
+        <Metrics items={project.metrics} className="mt-8 border-y border-line py-5" />
+
+        <div className="mt-8">
+          <p className="mono-label mb-3">Architecture</p>
+          <div className="flow-panel rounded-2xl border border-line bg-background p-3 sm:p-7">
+            <FlowDiagram graph={project.flow} />
+          </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {projects.map((project, index) => {
-            const ProjectCard = (
-              <Card
-                key={project.title}
-                className={`p-5 hover-elevate transition-all duration-700 flex flex-col h-full ${
-                  project.featured
-                    ? "border-primary/40 ring-1 ring-primary/20"
-                    : ""
-                } ${
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
-                data-testid={`card-project-${index}`}
-              >
-                {/* Project Header */}
-                <div className="mb-3 flex items-start justify-between gap-2">
-                  <div>
-                    {project.featured && (
-                      <span className="inline-block text-[10px] font-medium tracking-widest uppercase text-primary/70 mb-1">
-                        ★ Featured
-                      </span>
-                    )}
-                    <h3 className={`text-base font-semibold mb-1 ${project.featured ? "text-foreground" : ""}`}>
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground font-mono">
-                      {project.date}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 bg-secondary text-secondary-foreground text-xs rounded-md border border-secondary-border"
-                      data-testid={`badge-tech-${tech.toLowerCase()}`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Achievements */}
-                <ul className="space-y-2 flex-1">
-                  {project.achievements?.map((achievement, i) => (
-                    <li key={i} className="flex gap-2 text-xs leading-relaxed">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            );
-
-            return project.url ? (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={project.title}
-                className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
-              >
-                {ProjectCard}
-              </a>
-            ) : (
-              ProjectCard
-            );
-          })}
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_280px]">
+          <div>
+            <p className="mono-label mb-3">What I built</p>
+            <Bullets items={project.achievements} />
+          </div>
+          <div>
+            <p className="mono-label mb-3">Stack</p>
+            <Tags items={project.technologies} label={`${project.title} stack`} />
+          </div>
         </div>
-
-
-      </div>
-    </section>
+      </article>
+    </FadeIn>
   );
 }

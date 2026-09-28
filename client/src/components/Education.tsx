@@ -1,7 +1,5 @@
-import { Card } from "@/components/ui/card";
-import { GraduationCap } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
-import { useRef } from "react";
+import { Section } from "./Section";
+import { FadeIn } from "./motion";
 
 const education = [
   {
@@ -21,76 +19,36 @@ const education = [
 ];
 
 export default function Education() {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="education" ref={ref} className="py-16 md:py-20 px-6 md:px-12  bg-muted/30">
-      <div className="max-w-5xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10 space-y-2">
-          <h2
-            className={`text-2xl md:text-3xl font-semibold transition-all duration-700 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+    <Section
+      id="education"
+      subtitle="Classroom gave me the map. The terminal gave me the territory."
+    >
+      <ol>
+        {education.map((edu, index) => (
+          <FadeIn
+            as="li"
+            key={edu.institution}
+            className="grid gap-4 border-t border-line py-8 lg:grid-cols-[280px_1fr_auto] lg:items-baseline lg:gap-12"
           >
-            Education
-          </h2>
-          <p
-            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            Classroom gave me the map. The terminal gave me the territory.
-          </p>
-        </div>
-
-        <div className="space-y-8">
-          {/* Education Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {education.map((edu, index) => (
-              <Card
-                key={edu.institution}
-                // --- MODIFICATION: Added hover effects ---
-                className={`p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  isInView
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-8"
-                }`}
-                // --- END MODIFICATION ---
-                style={{ transitionDelay: `${index * 100}ms` }}
-                data-testid={`card-education-${index}`}
-              >
-                <div className="flex gap-3">
-                  <div className="p-2 bg-primary text-primary-foreground rounded-md h-fit">
-                    <GraduationCap className="h-4 w-4" />
-                  </div>
-                  <div className="flex-1 space-y-2">
-                    <h3 className="text-sm font-semibold leading-tight">
-                      {edu.institution}
-                    </h3>
-                    <p className="text-xs text-muted-foreground">{edu.degree}</p>
-                    <div className="flex flex-wrap gap-1.5 text-xs text-muted-foreground">
-                      <span className="font-mono">{edu.duration}</span>
-                      {edu.cgpa && (
-                        <>
-                          <span>•</span>
-                          <span className="font-semibold text-foreground">
-                            {edu.cgpa} CGPA
-                          </span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+            <p className="font-mono text-[12px] text-secondary">{edu.duration}</p>
+            <div data-testid={`card-education-${index}`}>
+              <h3 className="text-[20px] font-semibold leading-snug tracking-[-0.015em] sm:text-[22px]">
+                {edu.institution}
+              </h3>
+              <p className="mt-1 text-[15px]">{edu.degree}</p>
+            </div>
+            {edu.cgpa && (
+              <p className="flex items-baseline gap-2 lg:justify-end">
+                <span className="text-[28px] font-semibold leading-none tracking-[-0.03em] text-foreground">
+                  {edu.cgpa}
+                </span>
+                <span className="font-mono text-[11px] text-faint">CGPA</span>
+              </p>
+            )}
+          </FadeIn>
+        ))}
+      </ol>
+    </Section>
   );
 }

@@ -1,9 +1,7 @@
-import { Card } from "@/components/ui/card";
-import { Award } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
-import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Section } from "./Section";
+import { FadeIn } from "./motion";
 
-// --- MODIFICATION 1: Updated certifications array ---
 const certifications = [
   {
     title: "Quora System Design",
@@ -46,67 +44,38 @@ const certifications = [
     url: "https://drive.google.com/file/d/19kfJmjCZJu2KjpQzQRNrWTIh7_Vfq6pK/view?usp=drive_link",
   },
 ];
-// --- END MODIFICATION 1 ---
 
 export default function Certifications() {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section
+    <Section
       id="certifications"
-      ref={ref}
-      className="py-16 md:py-20 px-6 md:px-12"
+      subtitle="Certified. Occasionally. The skills were already there."
     >
-      <div className="max-w-5xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10 space-y-2">
-          <h2
-            className={`text-2xl md:text-3xl font-semibold transition-all duration-700 flex items-center justify-center gap-2 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <Award className="h-5 w-5" />
-            Certifications
-          </h2>
-          <p
-            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            Certified. Occasionally. The skills were already there.
-          </p>
-        </div>
-
-        {/* --- MODIFICATION 2: Mapped cards wrapped in <a> tags --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <FadeIn>
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {certifications.map((cert, index) => (
-            <a
-              key={cert.title}
-              href={cert.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
-            >
-              <Card
-                className={`p-4 text-center hover-elevate transition-all duration-700 h-full ${
-                  isInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+            <li key={cert.title}>
+              <a
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full items-start justify-between gap-4 rounded-2xl border border-line bg-surface/60 px-5 py-4 transition-[background-color,border-color,box-shadow] duration-200 hover:border-primary/40 hover:bg-surface hover:[box-shadow:var(--shadow-card)]"
                 data-testid={`card-certification-${index}`}
               >
-                <h4 className="font-semibold text-sm mb-1">{cert.title}</h4>
-                <p className="text-xs text-muted-foreground">{cert.issuer}</p>
-              </Card>
-            </a>
+                <span className="min-w-0">
+                  <span className="block text-[15px] font-medium text-foreground">{cert.title}</span>
+                  <span className="mt-0.5 block font-mono text-[11.5px] text-faint">{cert.issuer}</span>
+                </span>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="mt-0.5 h-4 w-4 shrink-0 text-faint transition-[color,transform] duration-200 group-hover:-translate-y-px group-hover:translate-x-px group-hover:text-primary"
+                />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
           ))}
-        </div>
-        {/* --- END MODIFICATION 2 --- */}
-      </div>
-    </section>
+        </ul>
+      </FadeIn>
+    </Section>
   );
 }

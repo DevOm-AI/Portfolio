@@ -1,113 +1,137 @@
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import CommandPalette from "./CommandPalette";
+import ThemeToggle from "./ThemeToggle";
+import { Container } from "./Section";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { sections } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Research Papers", href: "#research-papers" },
-  { name: "Experience", href: "#experience" },
-  { name: "Education", href: "#education" },
-  { name: "Certifications", href: "#certifications" }, 
-  { name: "Contact", href: "#contact" },
-];
+const sectionIds = sections.map((s) => s.id);
 
 export default function Navigation() {
-  const { theme, setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
+  const active = useActiveSection(sectionIds);
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad/.test(navigator.platform));
+  }, []);
 
-  const handleNavClick = (href: string) => {
-    setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [mobileMenuOpen]);
+
+  const linkClass = (id: string) =>
+    cn(
+      "relative transition-colors duration-200 hover:text-foreground",
+      active === id ? "text-foreground" : "text-subtle",
+    );
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo/Name */}
+    <header className="sticky top-0 z-40 border-b border-line/80 bg-background/90 backdrop-blur-sm">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:text-foreground"
+      >
+        Skip to content
+      </a>
+
+      <Container className="flex h-16 items-center justify-between gap-6">
+        <a
+          href="#about"
+          className="shrink-0 whitespace-nowrap font-mono text-[13px] font-medium text-foreground"
+          data-testid="link-logo"
+        >
+          &lt;DevOm-AI/&gt;
+        </a>
+
+        <nav aria-label="Sections" className="hidden lg:block">
+          <ul className="flex items-center gap-5 whitespace-nowrap text-[13.5px]">
+            {sections.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  className={linkClass(s.id)}
+                  aria-current={active === s.id ? "location" : undefined}
+                  data-testid={`link-nav-${s.name.toLowerCase()}`}
+                >
+                  {s.name}
+                  {active === s.id && (
+                    <span
+                      aria-hidden="true"
+                      className="glow-dot absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary"
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="flex shrink-0 items-center gap-2">
           <button
-            onClick={() => handleNavClick("#about")}
-            className="font-mono text-lg font-semibold hover-elevate active-elevate-2 px-2 py-1 rounded-md transition-transform"
-            data-testid="link-logo"
+            type="button"
+            onClick={() => setPaletteOpen(true)}
+            className="hidden items-center gap-1.5 whitespace-nowrap rounded-full border border-line bg-surface px-3 py-1 font-mono text-[11px] text-faint transition-colors duration-200 hover:border-primary/50 hover:text-foreground sm:inline-flex"
+            aria-label="Open command palette"
+            aria-keyshortcuts={isMac ? "Meta+K" : "Control+K"}
           >
-            &lt;DevOm-AI/&gt;
+            {isMac ? "⌘" : "Ctrl"} K
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleNavClick(link.href)}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover-elevate active-elevate-2 rounded-md transition-all"
-                data-testid={`link-nav-${link.name.toLowerCase()}`}
-              >
-                {link.name}
-              </button>
-            ))}
-          </div>
+          <ThemeToggle />
 
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center gap-2">
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={toggleTheme}
-              className="rounded-full"
-              data-testid="button-theme-toggle"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden rounded-full"
-              data-testid="button-mobile-menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-subtle transition-colors duration-200 hover:bg-accent hover:text-foreground lg:hidden"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            data-testid="button-mobile-menu"
+          >
+            {mobileMenuOpen ? (
+              <X aria-hidden="true" className="h-4 w-4" />
+            ) : (
+              <Menu aria-hidden="true" className="h-4 w-4" />
+            )}
+          </button>
         </div>
+      </Container>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t animate-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => handleNavClick(link.href)}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover-elevate active-elevate-2 rounded-md text-left transition-all"
-                  data-testid={`link-mobile-${link.name.toLowerCase()}`}
-                >
-                  {link.name}
-                </button>
+      {mobileMenuOpen && (
+        <nav id="mobile-menu" aria-label="Sections" className="border-t border-line lg:hidden">
+          <Container>
+            <ul className="py-3">
+              {sections.map((s, i) => (
+                <li key={s.id}>
+                  <a
+                    href={`#${s.id}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn("flex items-baseline gap-4 py-2.5 text-[16px]", linkClass(s.id))}
+                    aria-current={active === s.id ? "location" : undefined}
+                    data-testid={`link-mobile-${s.name.toLowerCase()}`}
+                  >
+                    <span aria-hidden="true" className="w-5 font-mono text-[12px] text-primary-ink">
+                      {String(i).padStart(2, "0")}
+                    </span>
+                    {s.name}
+                  </a>
+                </li>
               ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+            </ul>
+          </Container>
+        </nav>
+      )}
+
+      <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
+    </header>
   );
 }

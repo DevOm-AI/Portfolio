@@ -18,6 +18,11 @@ export default {
         foreground: "hsl(var(--foreground) / <alpha-value>)",
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",
+        // Portfolio palette (see client/src/index.css)
+        surface: "hsl(var(--surface) / <alpha-value>)",
+        line: "hsl(var(--line) / <alpha-value>)",
+        subtle: "hsl(var(--subtle) / <alpha-value>)",
+        faint: "hsl(var(--faint) / <alpha-value>)",
         card: {
           DEFAULT: "hsl(var(--card) / <alpha-value>)",
           foreground: "hsl(var(--card-foreground) / <alpha-value>)",
@@ -30,6 +35,7 @@ export default {
         },
         primary: {
           DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+          ink: "hsl(var(--primary-ink) / <alpha-value>)",
           foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
           border: "var(--primary-border)",
         },

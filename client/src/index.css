@@ -2,207 +2,142 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE */
-:root {
-  --button-outline: rgba(0,0,0, .10);
-  --badge-outline: rgba(0,0,0, .05);
+/*
+ * Design tokens — "Warm Light".
+ * 1 base (warm paper) + 1 primary accent (coral) + 1 secondary accent (slate blue) + ink neutrals.
+ * Values are HSL triplets so Tailwind can apply alpha: hsl(var(--x) / <alpha>).
+ * Every text pair below is WCAG AA on both --background and --surface.
+ */
 
-  /* Automatic computation of border around primary / danger buttons */
-  --opaque-button-border-intensity: -8; /* In terms of percentages */
-
-  /* Backgrounds applied on top of other backgrounds when hovered/active */
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .08);
-
-  --background: 0 0% 100%;
-
-  --foreground: 0 0% 5%;
-
-  --border: 0 0% 89%;
-
-  --card: 0 0% 98%;
-
-  --card-foreground: 0 0% 5%;
-
-  --card-border: 0 0% 92%;
-
-  --sidebar: 0 0% 96%;
-
-  --sidebar-foreground: 0 0% 8%;
-
-  --sidebar-border: 0 0% 90%;
-
-  --sidebar-primary: 0 0% 10%;
-
-  --sidebar-primary-foreground: 0 0% 98%;
-
-  --sidebar-accent: 0 0% 92%;
-
-  --sidebar-accent-foreground: 0 0% 15%;
-
-  --sidebar-ring: 0 0% 20%;
-
-  --popover: 0 0% 95%;
-
-  --popover-foreground: 0 0% 8%;
-
-  --popover-border: 0 0% 88%;
-
-  --primary: 0 0% 9%;
-
-  --primary-foreground: 0 0% 98%;
-
-  --secondary: 0 0% 90%;
-
-  --secondary-foreground: 0 0% 12%;
-
-  --muted: 0 0% 94%;
-
-  --muted-foreground: 0 0% 35%;
-
-  --accent: 0 0% 93%;
-
-  --accent-foreground: 0 0% 15%;
-
-  --destructive: 0 84% 30%;
-
-  --destructive-foreground: 0 0% 98%;
-
-  --input: 0 0% 75%;
-  --ring: 0 0% 25%;
-  --chart-1: 0 0% 20%;
-  --chart-2: 0 0% 30%;
-  --chart-3: 0 0% 40%;
-  --chart-4: 0 0% 50%;
-  --chart-5: 0 0% 60%;
-
-  --font-sans: Inter, system-ui, -apple-system, sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
-  --radius: .5rem; /* 8px */
-  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 1px 3px 0px hsl(0 0% 0% / 0.08);
-  --shadow-sm: 0px 2px 4px 0px hsl(0 0% 0% / 0.06), 0px 1px 2px -1px hsl(0 0% 0% / 0.04);
-  --shadow: 0px 4px 6px 0px hsl(0 0% 0% / 0.07), 0px 2px 4px -1px hsl(0 0% 0% / 0.05);
-  --shadow-md: 0px 6px 12px 0px hsl(0 0% 0% / 0.08), 0px 4px 6px -2px hsl(0 0% 0% / 0.06);
-  --shadow-lg: 0px 10px 20px 0px hsl(0 0% 0% / 0.10), 0px 6px 8px -2px hsl(0 0% 0% / 0.08);
-  --shadow-xl: 0px 20px 30px 0px hsl(0 0% 0% / 0.12), 0px 10px 15px -3px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0px 25px 50px 0px hsl(0 0% 0% / 0.15);
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
-
-  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
-
-  /* Fallback for older browsers */
-  --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --primary-border: hsl(var(--primary));
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --muted-border: hsl(var(--muted));
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --accent-border: hsl(var(--accent));
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+/* Metric-matched fallback so the swap to Inter doesn't shift layout */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107.12%;
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
 }
 
+:root {
+  /* Base */
+  --background: 38 44.4% 96.5%;      /* #FAF7F2  warm paper */
+  --surface: 0 0% 100%;              /* #FFFFFF  cards */
+  --line: 37 29% 87.8%;              /* #E9E2D7  borders, rules */
+
+  /* Neutrals */
+  --foreground: 224 22.4% 13.1%;     /* #1A1E29  ink — headings, 15.6:1 */
+  --subtle: 224 13.3% 33.9%;         /* #4B5162  body, 7.4:1 */
+  --faint: 225 8.7% 45.1%;           /* #696E7D  mono metadata, 4.8:1 */
+
+  /* Primary accent — coral */
+  --primary: 16 72.8% 55.3%;         /* #E0653A  lines, dots, rings (non-text, 3.2:1+) */
+  --primary-ink: 16 70.6% 41.4%;     /* #B4461F  coral as text, 5.1:1 */
+  --primary-foreground: 224 22.4% 13.1%; /* ink on coral, 4.8:1 */
+
+  /* Secondary accent — slate blue */
+  --secondary: 216 33.3% 41.2%;      /* #46628C  dates, tags, async lines, 5.8:1 */
+  --secondary-foreground: 0 0% 100%; /* white on slate, 6.2:1 */
+
+  /* Hero glow (decoration only) */
+  --glow-amber: 38 92% 60%;
+  --glow-coral-a: 0.16;
+  --glow-amber-a: 0.12;
+  --glow-slate-a: 0;
+
+  /* shadcn/ui tokens, mapped onto the palette above */
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--primary);
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --card-border: var(--line);
+  --popover: var(--surface);
+  --popover-foreground: var(--foreground);
+  --popover-border: var(--line);
+  --muted: var(--background);
+  --muted-foreground: var(--subtle);
+  --accent: 36 38% 92.5%;            /* warm hover tint */
+  --accent-foreground: var(--foreground);
+  --destructive: 0 84% 30%;
+  --destructive-foreground: 0 0% 98%;
+
+  --button-outline: rgba(0,0,0, .10);
+  --badge-outline: rgba(0,0,0, .05);
+  --opaque-button-border-intensity: -8;
+  --elevate-1: rgba(0,0,0, .03);
+  --elevate-2: rgba(0,0,0, .08);
+  --primary-border: hsl(var(--primary));
+  --secondary-border: hsl(var(--secondary));
+  --muted-border: hsl(var(--line));
+  --accent-border: hsl(var(--line));
+  --destructive-border: hsl(var(--destructive));
+
+  /* Architecture diagrams */
+  --flow-line: hsl(var(--primary));
+  --flow-async: hsl(var(--secondary));
+  --flow-node: hsl(var(--background));
+  --flow-node-stroke: hsl(var(--line));
+  --flow-text: hsl(var(--foreground));
+  --flow-note: hsl(var(--faint));
+  --flow-dot: hsl(var(--primary));
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px hsl(var(--foreground) / 0.04), 0 8px 24px -8px hsl(var(--foreground) / 0.1);
+  --shadow-card-hover: 0 0 0 1px hsl(var(--primary) / 0.35), 0 18px 40px -12px hsl(var(--primary) / 0.28);
+  --shadow-cta: 0 8px 20px -8px hsl(var(--foreground) / 0.5);
+
+  --font-sans: "Inter Variable", "Inter Fallback", system-ui, -apple-system, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, Menlo, Consolas, monospace;
+  --radius: .5rem;
+  --ease: cubic-bezier(.2, .65, .2, 1);
+
+  color-scheme: light;
+}
+
+/*
+ * Dark theme — "Warm Dark": the paper becomes deep ink, the ink becomes warm
+ * paper-coloured text, and coral / slate blue are lifted to glow on dark.
+ * Text pairs are WCAG AA on --background, --surface and --accent.
+ */
 .dark {
+  /* Base */
+  --background: 223 20% 6.9%;        /* #0E1015  deep ink */
+  --surface: 222 18.5% 10.6%;        /* #161920  cards */
+  --line: 224 15.2% 19.4%;           /* #2A2E39 */
+
+  /* Neutrals */
+  --foreground: 36 38.5% 92.4%;      /* #F3EDE4  warm paper text, 16.4:1 */
+  --subtle: 36 9.6% 69.2%;           /* #B8B2A9  body, 9.0:1 */
+  --faint: 35 5.2% 54.5%;            /* #918C85  metadata, 5.3:1 on surface */
+
+  /* Accents, lifted for dark */
+  --primary: 17 84.5% 62%;           /* #F07A4C  coral lines, dots, rings */
+  --primary-ink: 14 87.3% 72.2%;     /* #F6977A  coral as text, 8.1:1 */
+  --primary-foreground: 223 20% 6.9%;
+  --secondary: 219 47.6% 71.6%;      /* #94ACD9  slate blue, 7.7:1 */
+  --secondary-foreground: 223 20% 6.9%;
+
+  --accent: 222 17.3% 14.7%;         /* #1F232C  hover tint */
+
+  --glow-coral-a: 0.26;
+  --glow-amber-a: 0.13;
+  --glow-slate-a: 0.2;
+
+  --flow-node: hsl(220 18.2% 12.9%); /* #1B1F27 */
+  --flow-node-stroke: hsl(224 14% 24%);
+
+  --shadow-card: inset 0 1px 0 hsl(var(--foreground) / 0.05), 0 16px 40px -16px rgb(0 0 0 / 0.7);
+  --shadow-card-hover: 0 0 0 1px hsl(var(--primary) / 0.45), 0 24px 60px -20px hsl(var(--primary) / 0.45);
+  --shadow-cta: 0 10px 32px -10px hsl(var(--primary) / 0.65);
+
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
-
-  --opaque-button-border-intensity: 9;  /* In terms of percentages */
-
-  /* Backgrounds applied on top of other backgrounds when hovered/active */
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
 
-  --background: 0 0% 4%;
-
-  --foreground: 0 0% 98%;
-
-  --border: 0 0% 15%;
-
-  --card: 0 0% 6%;
-
-  --card-foreground: 0 0% 98%;
-
-  --card-border: 0 0% 12%;
-
-  --sidebar: 0 0% 8%;
-
-  --sidebar-foreground: 0 0% 95%;
-
-  --sidebar-border: 0 0% 14%;
-
-  --sidebar-primary: 0 0% 95%;
-
-  --sidebar-primary-foreground: 0 0% 8%;
-
-  --sidebar-accent: 0 0% 12%;
-
-  --sidebar-accent-foreground: 0 0% 90%;
-
-  --sidebar-ring: 0 0% 80%;
-
-  --popover: 0 0% 10%;
-
-  --popover-foreground: 0 0% 95%;
-
-  --popover-border: 0 0% 16%;
-
-  --primary: 0 0% 95%;
-
-  --primary-foreground: 0 0% 8%;
-
-  --secondary: 0 0% 14%;
-
-  --secondary-foreground: 0 0% 92%;
-
-  --muted: 0 0% 11%;
-
-  --muted-foreground: 0 0% 65%;
-
-  --accent: 0 0% 12%;
-
-  --accent-foreground: 0 0% 88%;
-
-  --destructive: 0 84% 30%;
-
-  --destructive-foreground: 0 0% 98%;
-
-  --input: 0 0% 30%;
-  --ring: 0 0% 75%;
-  --chart-1: 0 0% 85%;
-  --chart-2: 0 0% 75%;
-  --chart-3: 0 0% 65%;
-  --chart-4: 0 0% 55%;
-  --chart-5: 0 0% 45%;
-
-  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.20);
-  --shadow-xs: 0px 1px 3px 0px hsl(0 0% 0% / 0.30);
-  --shadow-sm: 0px 2px 4px 0px hsl(0 0% 0% / 0.25), 0px 1px 2px -1px hsl(0 0% 0% / 0.20);
-  --shadow: 0px 4px 6px 0px hsl(0 0% 0% / 0.30), 0px 2px 4px -1px hsl(0 0% 0% / 0.25);
-  --shadow-md: 0px 6px 12px 0px hsl(0 0% 0% / 0.35), 0px 4px 6px -2px hsl(0 0% 0% / 0.30);
-  --shadow-lg: 0px 10px 20px 0px hsl(0 0% 0% / 0.40), 0px 6px 8px -2px hsl(0 0% 0% / 0.35);
-  --shadow-xl: 0px 20px 30px 0px hsl(0 0% 0% / 0.45), 0px 10px 15px -3px hsl(0 0% 0% / 0.40);
-  --shadow-2xl: 0px 25px 50px 0px hsl(0 0% 0% / 0.50);
-
+  color-scheme: dark;
 }
 
 @layer base {
@@ -210,8 +145,180 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* keep anchored headings clear of the sticky header */
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-subtle;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-foreground;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Small uppercase mono label (e.g. "Architecture", "Stack") */
+  .mono-label {
+    @apply font-mono text-[11px] uppercase text-faint;
+    letter-spacing: 0.08em;
+  }
+
+  /* Inline link: ink text with a coral underline that strengthens on hover */
+  .text-link {
+    @apply font-medium text-foreground underline decoration-primary/40 underline-offset-[5px] transition-colors duration-200;
+    text-decoration-thickness: 1.5px;
+  }
+  .text-link:hover {
+    @apply decoration-primary;
+  }
+
+  /* White paper card with a soft shadow */
+  .card {
+    @apply rounded-3xl border border-line bg-surface;
+    box-shadow: var(--shadow-card);
+  }
+  /* Interactive cards: soft lift + coral ring on hover */
+  .card-lift {
+    transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Warm coral/amber wash behind the hero, drifting slowly */
+  .hero-glow {
+    position: absolute;
+    inset: -240px -160px auto auto;
+    width: 820px;
+    height: 640px;
+    pointer-events: none;
+    background:
+      radial-gradient(closest-side at 55% 50%, hsl(var(--primary) / var(--glow-coral-a)), transparent),
+      radial-gradient(closest-side at 30% 70%, hsl(var(--glow-amber) / var(--glow-amber-a)), transparent),
+      radial-gradient(closest-side at 12% 88%, hsl(var(--secondary) / var(--glow-slate-a)), transparent);
+    filter: blur(40px);
+    animation: glow-drift 24s ease-in-out infinite alternate;
+  }
+
+  /* Status-pill dot with a slow, soft ring */
+  .status-dot {
+    position: relative;
+  }
+  .status-dot::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0;
+    animation: status-ping 2.8s ease-out infinite;
+  }
+}
+
+/* ── Dark-only polish ─────────────────────────────────── */
+@layer components {
+  /* Faint grid behind the hero, fading out from the top */
+  .hero-grid {
+    display: none;
+  }
+  .dark .hero-grid {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 65% at 60% 0%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 65% at 60% 0%, #000 20%, transparent 75%);
+  }
+
+  /* Name set in paper fading softly to warm grey */
+  .dark .hero-name {
+    background: linear-gradient(180deg, hsl(var(--foreground)) 35%, hsl(var(--foreground) / 0.62));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Cards: hairline gradient border catching light along the top edge */
+  .dark .card {
+    border-color: transparent;
+    background:
+      linear-gradient(hsl(var(--surface)), hsl(var(--surface))) padding-box,
+      linear-gradient(180deg, hsl(var(--foreground) / 0.16), hsl(var(--line)) 34%, hsl(var(--line) / 0.6)) border-box;
+  }
+  .dark .card-featured {
+    background:
+      linear-gradient(hsl(var(--surface)), hsl(var(--surface))) padding-box,
+      linear-gradient(140deg, hsl(var(--primary) / 0.6), hsl(var(--line)) 32%, hsl(var(--line) / 0.6)) border-box;
+  }
+
+  /* Architecture panels read like a blueprint */
+  .dark .flow-panel {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.07) 1px, transparent 1px);
+    background-size: 18px 18px;
+    background-position: 9px 9px;
+  }
+
+  /* A low coral glow closing the page behind Contact */
+  .dark #contact {
+    background: radial-gradient(55% 42% at 50% 64%, hsl(var(--primary) / 0.1), transparent 70%);
+  }
+
+  /* Glowing accents */
+  .dark .glow-dot {
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.85);
+  }
+  .dark .flow-dot {
+    filter: drop-shadow(0 0 3px currentColor);
+  }
+}
+
+/* Theme switch: circular reveal (driven from use-theme.ts) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@keyframes glow-drift {
+  from { transform: translate3d(-2%, 0, 0) scale(1); }
+  to   { transform: translate3d(2%, 4%, 0) scale(1.06); }
+}
+@keyframes status-ping {
+  0%   { transform: scale(0.6); opacity: 0.45; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-glow,
+  .status-dot::after {
+    animation: none;
+  }
+  .card-lift:hover {
+    transform: none;
   }
 }
 

@@ -1,134 +1,79 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
-import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Section, Container } from "./Section";
+import { FadeIn } from "./motion";
+import { links } from "@/lib/site";
 
 const contactMethods = [
   {
-    icon: Mail,
     label: "Email",
     value: "om.shete.developer@gmail.com",
-    href: "https://mail.google.com/mail/?view=cm&fs=1&to=om.shete.developer@gmail.com",
+    href: links.email,
   },
   {
-    icon: Github,
     label: "GitHub",
     value: "DevOm-AI",
-    href: "https://github.com/DevOm-AI",
+    href: links.github,
   },
   {
-    icon: Linkedin,
     label: "LinkedIn",
     value: "devom-ai",
-    href: "https://www.linkedin.com/in/devom-ai/",
+    href: links.linkedin,
   },
   {
-    icon: Twitter,
     label: "X (Twitter)",
     value: "@Om_S_Dev",
-    href: "https://x.com/Om_S_Dev",
+    href: links.x,
   },
 ];
 
 export default function Contact() {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const externalLinks = ["Email", "GitHub", "LinkedIn", "X (Twitter)"];
-
   return (
-    <section
+    <Section
       id="contact"
-      ref={ref}
-      className="py-16 md:py-20 px-6 md:px-12  bg-muted/30"
+      subtitle="The only section where I'm waiting on *you* to push first."
     >
-      <div className="max-w-5xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10 space-y-2">
-          <h2
-            className={`text-2xl md:text-3xl font-semibold transition-all duration-700 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            Contact
-          </h2>
-          <p
-            className={`text-sm text-muted-foreground transition-all duration-700 delay-100 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            The only section where I'm waiting on *you* to push first.
-          </p>
-        </div>
+      <FadeIn>
+        <ul className="grid gap-4 sm:grid-cols-2" data-testid="card-contact">
+          {contactMethods.map((method) => (
+            <li key={method.label}>
+              <a
+                href={method.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${method.label}: ${method.value} (opens in a new tab)`}
+                className="card card-lift group flex h-full items-start justify-between gap-4 p-6 sm:p-7"
+                data-testid={`button-contact-${method.label
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`}
+              >
+                <span className="min-w-0">
+                  <span className="mono-label block">{method.label}</span>
+                  <span className="mt-2 block break-all text-[19px] font-medium tracking-[-0.01em] text-foreground sm:text-[21px]">
+                    {method.value}
+                  </span>
+                </span>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="mt-1 h-5 w-5 shrink-0 text-faint transition-[color,transform] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </FadeIn>
+    </Section>
+  );
+}
 
-        {/* Contact Cards */}
-        <div className="max-w-2xl mx-auto">
-          <Card
-            className={`p-6 transition-all duration-700 delay-100 ${
-              isInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
-            }`}
-            data-testid="card-contact"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {contactMethods.map((method) => {
-                const Icon = method.icon;
-                return (
-                  <Button
-                    key={method.label}
-                    variant="outline"
-                    size="default"
-                    asChild
-                    className="h-full py-4 flex-col gap-2 hover-elevate" // Kept your 'hover-elevate' class
-                    data-testid={`button-contact-${method.label
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                  >
-                    <a
-                      href={method.href}
-                      target={
-                        externalLinks.includes(method.label)
-                          ? "_blank"
-                          : undefined
-                      }
-                      rel={
-                        externalLinks.includes(method.label)
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                    >
-                      <Icon className="h-4 w-4" />
-                      <div className="text-center">
-                        <p className="font-semibold text-xs mb-0.5">
-                          {method.label}
-                        </p>
-                        <p className="text-xs text-muted-foreground break-all">
-                          {method.value}
-                        </p>
-                      </div>
-                    </a>
-                  </Button>
-                );
-              })}
-            </div>
-          </Card>
+export function Footer() {
+  return (
+    <footer className="pb-10 pt-4">
+      <Container>
+        <div className="flex flex-col gap-1 border-t border-line pt-8 font-mono text-[12px] text-faint sm:flex-row sm:items-center sm:justify-between">
+          <p>Built with React &amp; Tailwind</p>
+          <p>console.log("Let's build something great!");</p>
         </div>
-
-        {/* Footer */}
-        <div
-          className={`text-center mt-12 space-y-1 transition-all duration-700 delay-300 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <p className="text-xs text-muted-foreground">
-            Built with React & Tailwind
-          </p>
-          <p className="text-xs text-muted-foreground font-mono">
-            console.log("Let's build something great!");
-          </p>
-        </div>
-      </div>
-    </section>
+      </Container>
+    </footer>
   );
 }
