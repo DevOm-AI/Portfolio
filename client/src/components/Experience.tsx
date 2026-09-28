@@ -7,12 +7,13 @@ const experience = [
   {
     company: "WhatBytes",
     role: "Backend Engineering Intern",
-    duration: "May 2026 - Present",
+    duration: "May 2026 – Sep 2026",
     location: "Remote",
     achievements: [
-      "Integrated four ATS platforms—Greenhouse, Lever, Workday, and SAP SuccessFactors—into MeetAI, handling provider-specific authentication, candidate/interview flows, and API contracts.",
-      "Built B2B partner APIs with API-key authentication and HMAC-signed webhooks, and integrated Stripe payment processing for production workflows.",
-      "Cut a core Calling Agent API’s latency by 67% (~12s → ~4s) by profiling the request path and moving non-critical downstream work to asynchronous processing.",
+      "Fixed outbound calling campaigns pausing by themselves in Rezora, an AI voice agent (Django, Celery, LiveKit). One unanswered call after all retries was stopping the whole campaign; now the failure is logged and the next queued call goes out, with up to 5 calls in parallel.",
+      "Tracked a flickering campaigns page to the frontend polling 5 APIs every 5 seconds and cut it to one. Fixed two N+1 queries in that API and stopped it from rewriting campaign status on every poll.",
+      "Integrated Greenhouse, Lever and Workday  into Meet AI, and built its partner API with HMAC-signed webhooks and a revocable API key per partner.",
+      "Added Stripe Checkout to Anybiz for paid valuation reports, with the report generated from Stripe's payment-success webhook instead of the browser redirect.",
     ],
   },
   {
@@ -21,9 +22,9 @@ const experience = [
     duration: "Jan 2025 – Apr 2025",
     location: "Pune, MH (Remote)",
     achievements: [
-      "Built production registration and live leaderboard systems with React, Node.js, and PostgreSQL, supporting 2,000+ concurrent students across 5 simultaneous events.",
-      "Normalized relational schemas and added indexing, reducing manual data reconciliation from 3 hours to under 20 minutes per event cycle.",
-      "Diagnosed API failures, race conditions, and deployment issues during live competitions while maintaining zero downtime across 3 event windows.",
+      "Built student registration and a live leaderboard with React, Node.js and PostgreSQL for 2,000+ students across 5 competition events.",
+      "Redesigned the database schema with foreign keys and indexes, cutting post-event data reconciliation from about 3 hours to under 20 minutes.",
+      "Fixed a race condition in leaderboard score updates and a deployment misconfiguration while events were live.",
     ],
   },
 ];

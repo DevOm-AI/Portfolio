@@ -5,18 +5,6 @@ import { useRef } from "react";
 
 const projects = [
   {
-    title: "Aegis — Financial Reconciliation Platform",
-    date: "(In Progress)",
-    featured: true,
-    technologies: ["Java", "Spring Boot", "PostgreSQL", "RabbitMQ", "Redis", "Docker"],
-    achievements: [
-      "Built idempotent event ingestion with transactional processing, preventing duplicate reconciliation on retries.",
-      "Used fixed-precision decimals and append-only audit trails to preserve financial correctness and traceability.",
-      "Built async reconciliation workflows with RabbitMQ and Redis, decoupling ingestion from downstream processing.",
-    ],
-    url: "https://github.com/Ashwanti/Aegis",
-  },
-  {
     title: "Linkra — Distributed URL Shortener & Analytics Engine",
     date: "Mar 2026",
     featured: true,
