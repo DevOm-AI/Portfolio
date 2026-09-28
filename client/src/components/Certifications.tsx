@@ -14,34 +14,14 @@ const certifications = [
     url: "https://drive.google.com/file/d/11Omlr6bs2iZ3D7X7Zo8h0tcr-pJO7QHN/view?usp=drive_link",
   },
   {
-    title: "Blockchain Build Station",
-    issuer: "Geeks of Gurukul",
-    url: "https://drive.google.com/file/d/1r414EpnvcTbnerGpP7-xc0OVaKrQP4o1/view?usp=drive_link",
-  },
-  {
-    title: "Python Workshop",
-    issuer: "IEEE SB VIT",
-    url: "https://drive.google.com/file/d/1xA0nMl7Uh3gne1yfnekbu2JG8r4Tg-pJ/view?usp=drive_link",
-  },
-  {
-    title: "Career Edge - Communication Skills",
-    issuer: "TCS iON",
-    url: "https://drive.google.com/file/d/1LecJZwi2Db--Y5R2cQpnG22amuJ0O2Og/view?usp=drive_link",
-  },
-  {
-    title: "MERN Stack Development",
-    issuer: "Course Certificate",
-    url: "https://drive.google.com/file/d/1PpqRaKA_jVdsMdde1VSq1VmiRswUqv2j/view?usp=drive_link",
+    title: "Deloitte Data Analytics",
+    issuer: "Deloitte Forage",
+    url: "https://drive.google.com/file/d/19kfJmjCZJu2KjpQzQRNrWTIh7_Vfq6pK/view?usp=drive_link",
   },
   {
     title: "Infosys Springboard",
     issuer: "Infosys",
     url: "https://drive.google.com/file/d/1OBhB7Cp86TO6tcGYhvs6A5igSxfHMofs/view?usp=drive_link",
-  },
-  {
-    title: "Deloitte Data Analytics",
-    issuer: "Deloitte Forage",
-    url: "https://drive.google.com/file/d/19kfJmjCZJu2KjpQzQRNrWTIh7_Vfq6pK/view?usp=drive_link",
   },
 ];
 
@@ -49,10 +29,10 @@ export default function Certifications() {
   return (
     <Section
       id="certifications"
-      subtitle="Certified. Occasionally. The skills were already there."
+      subtitle="Credentials that complement the engineering work."
     >
       <FadeIn>
-        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {certifications.map((cert, index) => (
             <li key={cert.title}>
               <a

@@ -4,27 +4,27 @@ import { FadeIn } from "./motion";
 const skillCategories = [
   {
     title: "Languages",
-    skills: ["Python", "Java", "JavaScript", "SQL"],
+    skills: ["Python", "JavaScript", "SQL"],
   },
   {
     title: "Backend",
-    skills: ["Spring Boot", "FastAPI", "Node.js", "REST APIs", "Webhooks", "JWT", "HMAC"],
+    skills: ["FastAPI", "Django", "Celery", "Node.js", "Express", "REST APIs", "Webhooks", "JWT", "OAuth2"],
   },
   {
-    title: "Databases & Infrastructure",
-    skills: ["MySQL", "PostgreSQL", "Redis", "Docker", "Docker Compose"],
+    title: "Databases",
+    skills: ["PostgreSQL", "MySQL", "Redis"],
   },
   {
-    title: "Frontend",
-    skills: ["React.JS", "Next.JS", "Tailwind CSS"],
-  },
-  {
-    title: "Engineering",
-    skills: ["Async Processing", "API Design", "Caching", "Messaging", "Testing", "Git"],
+    title: "Integrations",
+    skills: ["Stripe (Checkout, webhooks)", "LiveKit", "Telnyx SIP", "Greenhouse", "Workday", "Lever"],
   },
   {
     title: "Tools",
-    skills: ["VS Code", "GitHub", "Postman", "Docker", "Vercel", "Render"],
+    skills: ["Docker", "Git", "pytest", "k6", "Postman", "Sentry"],
+  },
+  {
+    title: "Frontend",
+    skills: ["React", "Tailwind CSS"],
   },
 ];
 
