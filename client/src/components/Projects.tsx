@@ -18,6 +18,49 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "Hookline – Webhook Delivery Service",
+    date: "Sep 2026",
+    featured: true,
+    technologies: ["FastAPI", "PostgreSQL", "Redis", "Celery", "Docker"],
+    achievements: [
+      "Sends each event to every app subscribed to it, signed so the receiver can check it's genuine. If a receiver is down, it retries later.",
+      "If a worker crashes mid-send, nothing is lost: every delivery is tracked in Postgres, and a stuck one gets picked up again.",
+      "Tested by killing workers at random while sending 10,000 events, with the receiver failing 20% of requests. Every event arrived.",
+      "268 tests run on every pull request. Refuses endpoint URLs that point to internal servers.",
+    ],
+    url: "https://github.com/DevOm-AI/Hookline",
+    metrics: [
+      { value: "0", label: "events lost" },
+      { value: "11", label: "workers killed" },
+      { value: "10,001", label: "events sent" },
+    ],
+    flow: {
+      title: "Hookline architecture",
+      nodes: [
+        { id: "app", label: "your app", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "api", label: "FastAPI", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "pg", label: "PostgreSQL", note: "source of truth", at: { wide: [2, 0], narrow: [0, 2] } },
+        { id: "sched", label: "scheduler", note: "every second", at: { wide: [2, 1], narrow: [0, 3] } },
+        { id: "redis", label: "Redis", note: "wake-ups only", at: { wide: [3, 1], narrow: [1, 3] } },
+        { id: "worker", label: "Celery workers", at: { wide: [3, 2], narrow: [1, 4] } },
+        { id: "recv", label: "receiver URLs", at: { wide: [4, 2], narrow: [1, 5] } },
+      ],
+      edges: [
+        { from: "app", to: "api" },
+        { from: "api", to: "pg" },
+        { from: "pg", to: "sched" },
+        { from: "sched", to: "worker" },
+        { from: "worker", to: "recv" },
+        { from: "sched", to: "redis", tone: "secondary" },
+        { from: "redis", to: "worker", tone: "secondary" },
+      ],
+      legend: [
+        { label: "every delivery is a row in Postgres" },
+        { label: "Redis only wakes workers up", tone: "secondary" },
+      ],
+    },
+  },
+  {
     title: "Linkra – URL Shortener with Click Analytics",
     date: "Mar 2026",
     featured: true,
@@ -44,37 +87,6 @@ export const projects: Project[] = [
       legend: [
         { label: "links & click analytics" },
         { label: "rate limit · INCR, 60s expiry", tone: "secondary" },
-      ],
-    },
-  },
-  {
-    title: "ShopNPoint",
-    date: "Sep – Nov 2025",
-    featured: true,
-    technologies: ["React JS", "Tailwind CSS", "JavaScript", "Python", "MySQL (Workbench)"],
-    achievements: [
-      "Built a token-based referral and redemption system where promotional codes generate tokens redeemable for up to 40% of cart value.",
-      "Implemented ML-based fraud detection to identify abnormal promotional-code usage and suspicious redemption patterns.",
-      "Built the React frontend and Python backend with transactional checkout and referral workflows.",
-    ],
-    url: "https://github.com/DevOm-AI/ShopNPoint",
-    metrics: [{ value: "40%", label: "max of cart value redeemable" }],
-    flow: {
-      title: "ShopNPoint architecture",
-      nodes: [
-        { id: "web", label: "React", at: { wide: [0, 0], narrow: [0, 0] } },
-        { id: "api", label: "Python backend", note: "checkout · referral", at: { wide: [1, 0], narrow: [0, 1] } },
-        { id: "db", label: "MySQL", note: "transactional", at: { wide: [2, 0], narrow: [0, 2] } },
-        { id: "fraud", label: "fraud detection", note: "ML-based", at: { wide: [2, 1], narrow: [1, 2] } },
-      ],
-      edges: [
-        { from: "web", to: "api" },
-        { from: "api", to: "db" },
-        { from: "api", to: "fraud", tone: "secondary", bend: { wide: "vh", narrow: "hv" } },
-      ],
-      legend: [
-        { label: "checkout & referral workflows" },
-        { label: "fraud detection", tone: "secondary" },
       ],
     },
   },
