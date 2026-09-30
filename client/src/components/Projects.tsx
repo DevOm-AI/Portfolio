@@ -18,6 +18,46 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "Tollgate – LLM API Gateway",
+    date: "Sep 2026",
+    featured: true,
+    technologies: ["FastAPI", "PostgreSQL", "Redis", "Stripe", "React"],
+    achievements: [
+      "Sits between apps and LLM providers: per-key rate limits and monthly budgets, streamed answers, usage billed through Stripe.",
+      "Budgets can't be overspent: 500 requests at once on a $1 budget, 10 runs, $0 over. The naive version went $3.65 over.",
+      "Killed the server with 200 requests in flight: none were billed, and spend, logs and Stripe still matched to the cent.",
+      "Switches to a backup provider if one fails before any output is sent. Adds about 22 ms per request.",
+    ],
+    url: "https://github.com/DevOm-AI/Tollgate",
+    metrics: [
+      { value: "$0", label: "overspent" },
+      { value: "500", label: "requests at once" },
+      { value: "~22 ms", label: "added per request" },
+    ],
+    flow: {
+      title: "Tollgate architecture",
+      nodes: [
+        { id: "app", label: "your app", at: { wide: [0, 0], narrow: [0, 0] } },
+        { id: "gate", label: "Tollgate", note: "key · limit · budget", at: { wide: [1, 0], narrow: [0, 1] } },
+        { id: "prov", label: "LLM providers", note: "Groq · Gemini", at: { wide: [3, 0], narrow: [1, 2] } },
+        { id: "redis", label: "Redis", note: "rate limits", at: { wide: [1, 1], narrow: [1, 1] } },
+        { id: "pg", label: "PostgreSQL", note: "budgets · usage", at: { wide: [2, 1], narrow: [0, 3] } },
+        { id: "stripe", label: "Stripe", note: "usage billing", at: { wide: [3, 1], narrow: [1, 3] } },
+      ],
+      edges: [
+        { from: "app", to: "gate" },
+        { from: "gate", to: "prov" },
+        { from: "gate", to: "pg", bend: { wide: "hv" } },
+        { from: "pg", to: "stripe" },
+        { from: "gate", to: "redis", tone: "secondary" },
+      ],
+      legend: [
+        { label: "budget reserved before each call" },
+        { label: "rate limits", tone: "secondary" },
+      ],
+    },
+  },
+  {
     title: "Hookline – Webhook Delivery Service",
     date: "Sep 2026",
     featured: true,
@@ -63,7 +103,7 @@ export const projects: Project[] = [
   {
     title: "Linkra – URL Shortener with Click Analytics",
     date: "Mar 2026",
-    featured: true,
+    featured: false,
     technologies: ["FastAPI", "PostgreSQL", "Redis", "React"],
     achievements: [
       "Built a URL shortener with custom slugs, expiring and password-protected links, and per-link click analytics.",
