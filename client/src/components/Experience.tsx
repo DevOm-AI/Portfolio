@@ -13,10 +13,10 @@ const experience = [
       { value: "5", label: "calls in parallel" },
     ],
     achievements: [
-      "Fixed outbound calling campaigns pausing by themselves in Rezora, an AI voice agent (Django, Celery, LiveKit). One unanswered call after all retries was stopping the whole campaign; now the failure is logged and the next queued call goes out, with up to 5 calls in parallel.",
+      "Fixed outbound calling campaigns pausing by themselves in an AI voice agent (Django, Celery, LiveKit). One unanswered call after all retries was stopping the whole campaign; now the failure is logged and the next queued call goes out, with up to 5 calls in parallel.",
       "Tracked a flickering campaigns page to the frontend polling 5 APIs every 5 seconds and cut it to one. Fixed two N+1 queries in that API and stopped it from rewriting campaign status on every poll.",
-      "Integrated Greenhouse, Lever and Workday  into Meet AI, and built its partner API with HMAC-signed webhooks and a revocable API key per partner.",
-      "Added Stripe Checkout to Anybiz for paid valuation reports, with the report generated from Stripe's payment-success webhook instead of the browser redirect.",
+      "Integrated Greenhouse, Lever and Workday  into an AI interview platform, and built its partner API with HMAC-signed webhooks and a revocable API key per partner.",
+      "Added Stripe Checkout to a business valuation platform for paid valuation reports, with the report generated from Stripe's payment-success webhook instead of the browser redirect.",
     ],
   },
   {
