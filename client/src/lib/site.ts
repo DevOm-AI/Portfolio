@@ -2,7 +2,7 @@
 
 export const links = {
   resume:
-    "https://drive.google.com/file/d/1zA2NPWZMarNm_ui0LhHDxVePxMdYoFoY/view?usp=sharing",
+    "https://drive.google.com/file/d/1YFaCqmcCS87P6vGeFm6eFC3GPN6Le6o1/view?usp=sharing",
   email:
     "https://mail.google.com/mail/?view=cm&fs=1&to=om.shete.developer@gmail.com",
   github: "https://github.com/DevOm-AI",
